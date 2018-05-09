@@ -1,0 +1,208 @@
+﻿<div class="modal fade"
+     id="newContactModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="newContactModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ul class="card-actions icons left-top">
+                    <li>
+                        <a href="javascript:void(0)" class="text-white" data-dismiss="modal" aria-label="Close">
+                            <i class="zmdi zmdi-close"></i>
+                        </a>
+                    </li>
+                </ul>
+                <h4 class="modal-title text-right">סטודנט חדש</h4>
+                <div class="user-avatar-wrapper">
+                    <figure>
+                        <div class="icon-upload">
+                            <label for="file-input">
+                                <span class="edit-avatar">
+                                    <span class="app_primary_lighten_bg animated zoomIn">
+                                        <img ng-show="user.imageUrl" class="img-circle" ng-src="{{user.imageUrl}}" />
+                                        <img ng-hide="user.imageUrl" 
+                                             class="img-circle" 
+                                             src="https://firebasestorage.googleapis.com/v0/b/bscbehevioralprod.appspot.com/o/defProfile.png?alt=media&token=6669a507-7e21-4f49-acc9-800980c09b3f" />
+                                    </span>
+                                </span>
+                            </label>
+                            <input onchange="angular.element(this).scope().imageUpload(this)"
+                                   id="file-input"
+                                   type="file">
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <form 
+                  name="myform2" novalidate
+                  ng-submit="addUser(user)"
+                  force-bind>
+                <div class="modal-body">
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                            <label class="control-label required">שם פרטי</label>
+                            <input ng-model="user.firstName"
+                                   ng-required="true"
+                                   dir="rtl"
+                                   type="text"
+                                   class="form-control"
+                                   id="add_name">
+                        </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                            <label class="control-label required">שם משפחה</label>
+                            <input ng-model="user.lastName"
+                                   ng-required="true"
+                                   dir="rtl"
+                                   type="text"
+                                   class="form-control"
+                                   id="add_name">
+                        </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                            <label class="control-label">דואר אלקטרוני</label>
+                            <input ng-model="user.email"
+                                   dir="rtl"
+                                   type="email"
+                                   class="form-control"
+                                   id="add_email">
+                        </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+                            <label class="control-label">טלפון</label>
+                            <input ng-model="user.phone"
+                                   dir="rtl"
+                                   type="tel"
+                                   class="form-control"
+                                   id="add_phone">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-flat"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        ביטול
+                    </button>
+                    <button type="submit"
+                            ng-disabled="myform2.$invalid || progress==true"
+                            class="btn btn-primary">
+                        שמור
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade"
+     id="editContactModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="editContactModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ul class="card-actions icons left-top">
+                    <li>
+                        <a href="javascript:void(0)" class="text-white" data-dismiss="modal" aria-label="Close">
+                            <i class="zmdi zmdi-close"></i>
+                        </a>
+                    </li>
+                </ul>
+                <h4 class="modal-title text-right">סטודנט חדש</h4>
+                <div class="user-avatar-wrapper">
+                    <figure>
+                        <div class="icon-upload">
+                            <label for="file-input">
+                                <span class="edit-avatar">
+                                    <div class="no-avatar app_primary_lighten_bg animated zoomIn">
+                                        <img class="img-circle" ng-src="{{edit.imageUrl}}" />
+                                    </div>
+                                </span>
+                            </label>
+                            <input onchange="angular.element(this).scope().imageUpload(this)"
+                                   id="file-input"
+                                   type="file">
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <form id="myForm"
+                  name="myform" novalidate
+                  ng-submit="update(edit)"
+                  force-bind>
+                <div class="modal-body">
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                            <label class="control-label required">שם פרטי</label>
+                            <input ng-model="edit.firstName"
+                                   ng-required="true"
+                                   dir="rtl"
+                                   type="text"
+                                   class="form-control"
+                                   id="add_name">
+                        </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                            <label class="control-label required">שם משפחה</label>
+                            <input ng-model="edit.lastName"
+                                   ng-required="true"
+                                   dir="rtl"
+                                   type="text"
+                                   class="form-control"
+                                   id="add_name">
+                        </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                            <label class="control-label">דואר אלקטרוני</label>
+                            <input ng-model="edit.email"
+                                   dir="rtl"
+                                   type="email"
+                                   class="form-control"
+                                   id="add_email">
+                        </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+                            <label class="control-label">טלפון</label>
+                            <input ng-model="edit.phone"
+                                   dir="rtl"
+                                   type="tel"
+                                   class="form-control"
+                                   id="add_phone">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-flat"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        ביטול
+                    </button>
+                    <button type="submit"
+                            ng-disabled="myform.$invalid || progress==true"
+                            class="btn btn-primary">
+                        שמור
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

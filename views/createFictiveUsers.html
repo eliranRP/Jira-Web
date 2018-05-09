@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="MainApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>מדעי ההתנהגות</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Poppins:300,400,500,600" rel="stylesheet">
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/vendor.bundle.css">
+    <link rel="stylesheet" href="../assets/css/app.bundle.css">
+    <link rel="stylesheet" href="../assets/css/theme-a.css">
+    <link href="../assets/css/myStyle.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-storage.js"></script>
+
+    <script>
+        // Initialize Firebase
+        var test = {
+            apiKey: "AIzaSyBLyrzF4hcY5xd-8mtdSlY6J4axjzLGuZc",
+            authDomain: "behavioralsience-ed36e.firebaseapp.com",
+            databaseURL: "https://behavioralsience-ed36e.firebaseio.com",
+            projectId: "behavioralsience-ed36e",
+            storageBucket: "behavioralsience-ed36e.appspot.com",
+            messagingSenderId: "303956946449"
+        };
+        var prod = {
+            apiKey: "AIzaSyDpm1ghjkvC5rEuYzleVVLRmVt1S4T8uFo",
+            authDomain: "bscruppinproj-b7111.firebaseapp.com",
+            databaseURL: "https://bscruppinproj-b7111.firebaseio.com",
+            projectId: "bscruppinproj-b7111",
+            storageBucket: "bscruppinproj-b7111.appspot.com",
+            messagingSenderId: "728167037602"
+        };
+        firebase.initializeApp(prod);
+    </script>
+
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+
+    <!--services-->
+    <script src="../js/app.js"></script>
+    <script src="../js/services/authentication.js"></script>
+    <script src="../js/services/systemService.js"></script>
+
+
+
+    <!--controllers-->
+    <script src="../js/controllers/registration.js"></script>
+    <script src="../js/controllers/createFictiveUser.js"></script>
+
+</head>
+<body>
+
+
+    <section id="content_outer_wrapper"
+             style="padding-left:0px!important;"
+             ng-controller="fuController">
+
+        <button ng-click="create()"
+                class="btn btn-primary"> Create User</button>
+        </section>
+
+
+    <script src="../assets/js/vendor.bundle.js"></script>
+    <script src="../assets/js/app.bundle.js"></script>
+</body>
+</html>

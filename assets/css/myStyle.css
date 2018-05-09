@@ -1,0 +1,70 @@
+﻿/* My Change Color */
+.md-bg-indigo-500 {
+    background-color: #00507e !important;
+}
+.checkbox {
+    direction: ltr;
+}
+
+.mdl-data-table th {
+    text-align: right !important;
+}
+
+td, th {
+    text-align: right !important;
+}
+
+.form-group.label-floating label.control-label, .form-group.label-placeholder label.control-label {
+    font-size: 13px;
+    right: 0;
+    text-align: right !important;
+}
+
+.required:before {
+    content: " * ";
+    color: red;
+}
+
+.error {
+    color: red;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: all 0.3s;
+    transform: translateZ(10px);
+}
+
+.main-card-data {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: all 0.3s;
+    transform: translateZ(10px);
+}
+
+.del-btn:hover {
+    background-color: #688696;
+    color: #fff;
+}
+.del-btn {
+    background-color: #e8f0fe !important;
+    color: #688696 !important;
+}
+
+#rup-logo {
+    position: absolute;
+    width: 600px;
+    top: -25px;
+    right: -12rem;
+}
+
+#rup-board {
+    position: relative;
+    top: -2rem;
+}
+.avatar-img {
+    max-height: 50px !important;
+    max-width: 50px !important;
+}
+
+

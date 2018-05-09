@@ -1,0 +1,122 @@
+﻿<div id="content" class="container-fluid">
+    <div class="content-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="card card-data-tables product-table-wrapper">
+                    <header class="card-heading">
+                        <div class="card-search">
+                            <div id="productsTable_wrapper" class="form-group label-floating is-empty">
+                                <i class="zmdi zmdi-search search-icon-left"></i>
+                                <input ng-model="search.$"
+                                       type="text"
+                                       class="form-control filter-input"
+                                       placeholder="חיפוש..."
+                                       autocomplete="off">
+                                <a href="javascript:void(0)" ng-click="search.$=''"
+                                   class="close-search"
+                                   data-card-search="close"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="נקה"><i class="zmdi zmdi-close"></i></a>
+                            </div>
+                        </div>
+                        <ul class="card-actions icons right-top"
+                            style="left:10px;right:inherit">
+                            <li id="deleteItems" style="display: none;">
+                                <span class="label label-info pull-left m-t-5 m-r-10 text-white"></span>
+                                <a href="javascript:void(0)" id="confirmDelete" data-toggle="tooltip" data-placement="top" data-original-title="Delete Product(s)">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-card-search="open" data-toggle="tooltip" data-placement="top" data-original-title="סינון">
+                                    <i class="zmdi zmdi-filter-list"></i>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" data-toggle="dropdown">
+                                    <i class="zmdi zmdi-more-vert"></i>
+                                </a>
+                                <div id="dataTablesLength">
+                                </div>
+                            </li>
+                        </ul>
+                    </header>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table id="productsTable" class="mdl-data-table product-table m-t-30" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th data-orderable="false" class="col-xs-2">
+                                            <button class="btn btn-primary btn-fab  animate-fab"
+                                                    data-toggle="modal"
+                                                    data-target="#newGroupModal">
+                                                <i class="zmdi zmdi-plus"></i>
+                                            </button>
+                                        </th>
+                                        <th ng-repeat="el in tableHeders.group"
+                                            ng-class="el.class"
+                                            ng-bind="el.desc">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in groupArr | filter:search">
+                                        <td></td>
+                                        <td ng-bind="item.email"></td>
+                                        <td ng-bind="item.password"></td>
+                                        <td>
+                                        <p  ng-show="item.tag">
+                                            <span 
+                                                 ng-bind="item.tag"
+                                                  class="label label-primary" 
+                                                  style="width:150px;color:#ffffff">Primary</span>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <div class="togglebutton">
+                                                <label>
+                                                    <input 
+                                                           type="checkbox" 
+                                                            ng-click="groupStateChange(item)"
+                                                           class="toggle-info" 
+                                                           ng-checked="{{item.published}}">
+                                                    <span class="toggle">
+
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a   
+                                               ng-click="previewProject(item)"
+                                               class="icon edit-customer"
+                                               href="users/group/preview.html" 
+                                               target="_blank">
+                                                <i style="margin-right:0px;" class="zmdi zmdi-eye"></i>
+                                            </a>
+                                            <a href="javascript:void(0)"
+                                               data-toggle="modal"
+                                               data-target="#editGroupModal"
+                                               ng-click="set(item)"
+                                               class="icon edit-customer">
+                                                <i class="zmdi zmdi-edit m-0">
+                                                </i>
+                                            </a>
+                                            <a href="javascript:void(0)"
+                                               ng-click="remove(item)"
+                                               class="icon edit-customer">
+                                                <i class="zmdi zmdi-delete m-0">
+                                                </i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

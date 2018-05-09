@@ -1,0 +1,68 @@
+﻿<div class="modal fade" id="newNameModal" tabindex="-1" role="dialog" aria-labelledby="newNameModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">תחום חדש</h4>
+            </div>
+            <form class="form-horizontal"
+                  id="myForm"
+                  name="myform" novalidate
+                  ng-submit="add(name)" force-bind>
+                <div class="modal-body">
+
+                    <div class="form-group is-empty">
+                        <div class="col-xs-10 pull-right">
+                            <input ng-required="true"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="name.val"
+                                   placeholder="תחום">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button ng-disabled="myform.$invalid"
+                            type="submit"
+                            class="btn btn-primary">
+                        שמור
+                    </button>
+                    <button class="btn btn-primary btn-flat" data-dismiss="modal" aria-label="Close">בטל</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editNameModal" tabindex="-1" role="dialog" aria-labelledby="editNameModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">תחום חדש</h4>
+            </div>
+            <form class="form-horizontal"
+                  id="myForm1"
+                  name="myform1" novalidate
+                  ng-submit="update(edit)" force-bind>
+                <div class="modal-body">
+
+                    <div class="form-group is-empty">
+                        <div class="col-xs-10 pull-right">
+                            <input ng-required="true"
+                                   type="text"
+                                   class="form-control"
+                                   ng-model="edit.val"
+                                   placeholder="תחום">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button ng-disabled="myform1.$invalid" type="submit"
+                            class="btn btn-primary">
+                        שמור
+                    </button>
+                    <button class="btn btn-primary btn-flat" data-dismiss="modal" aria-label="Close">בטל</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
