@@ -21,428 +21,419 @@
 
 
 
+
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-storage.js"></script>
 
-    <!--// Initialize Firebase-->
-    <script src="../js/inizialize.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
-
-    <title> {{configuration.title}} </title>
-
-    <!--services-->
-    <script src="../js/app.js"></script>
-    <script src="../js/services/authentication.js"></script>
-    <script src="../js/services/storageService.js"></script>
-    <script src="../js/services/groupService.js"></script>
-    <script src="../js/services/systemService.js"></script>
 
 
-
-
-    <!--controllers-->
-    <script src="../js/controllers/registration.js"></script>
-    <script src="../js/controllers/group.js"></script>
-    <script src="../js/controllers/system.js"></script>
+    <title> test-jira </title>
 
 </head>
 <body ng-cloak>
-    <div ng-show="currentGroup" class="card card-salmon" ng-controller="RegistrationController">
-        <header class="card-heading card-salmon p-b-20 md-bg-indigo-500" style="min-height:55px;">
-            <ul class="card-actions icons left-top">
-                <li class="dropdown">
-                    <a class="md-bg-indigo-500" href="javascript:void(0)" data-toggle="dropdown">
-                        <i style="color:white;" class="zmdi zmdi-more-vert"></i>
-                    </a>
-                    <ul class="dropdown-menu btn-primary dropdown-menu-left">
-                        <li>
-                            <a ng-click="logout()" href="javascript:void(0)">התנתק</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <h2 ng-controller="groupController" class="card-title md-bg-indigo-500 pull-right">{{detailes.project.name}}</h2>
-        </header>
-    </div>
 
-    <section ng-show="currentGroup" id="content_outer_wrapper"
-             style="padding-left:0px!important;"
-             ng-controller="groupController">
+    <section id="content_outer_wrapper"
+             style="padding-left:0px!important;">
         <div id="content_wrapper">
             <div id="content" class="container">
-                <div class="content-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card" id="rootwizard">
-                                <div class="card-heading">
-                                    <form class="form floating-label">
-                                        <div class="form-wizard-nav">
-                                            <div class="progress" style="width: 75%;">
-                                                <div class="progress-bar" style="width:0%;"></div>
-                                            </div>
-                                            <ul class="nav nav-justified nav-pills">
-                                                <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true"><span class="step">1</span> <span class="title">פרטי פרויקט</span></a></li>
-                                                <li class=""><a href="#tab2" data-toggle="tab" aria-expanded="false"><span class="step">2</span> <span class="title">פוסטר</span></a></li>
-                                                <li class=""><a href="#tab3" data-toggle="tab" aria-expanded="false"><span class="step">3</span> <span class="title">כללי</span></a></li>
-                                                <li class=""><a href="#tab4" data-toggle="tab" aria-expanded="false"><span class="step">4</span> <span class="title">צוות</span></a></li>
-                                                <li class=""><a href="#tab5" data-toggle="tab" aria-expanded="false"><span class="step">5</span> <span class="title">סיום</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="form-wizard form-wizard-horizontal">
-                                        <div class="tab-content clearfix p-30">
-                                            <div class="tab-pane active" id="tab1" dir="rtl">
-                                                <div class="card card p-20 p-t-10 m-b-0">
-                                                    <div class="card-body">
-                                                        <form class="form-horizontal">
-                                                            <div ng-class="{true:'is-focused', false:'is-empty'}[detailes.project.name!=null]"
-                                                                 class="form-group label-floating">
-                                                                <label class="control-label">שם פרויקט</label>
-                                                                <input ng-model="detailes.project.name"
-                                                                       type="text"
-                                                                       class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div id="add_product_desc"
-                                                                     ng-bind-html="detailes.project.desc">
+                <div class="container" ng-controller="AppCtrl">
 
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--end #tab1 -->
-                                            <div class="tab-pane" id="tab2" dir="rtl">
-                                                <form action="#" class="upload-form" enctype="multipart/form-data">
-                                                    <div class="row">
-                                                        <div ng-class="{true:'is-focused', false:'is-empty'}[detailes.project.name!=null]"
-                                                             class="form-group label-floating is-focused col-md-6 pull-right">
-                                                            <label class="control-label">קישור לסרטון</label>
-                                                            <input ng-model="detailes.poster.movieUrl"
-                                                                   type="text"
-                                                                   class="form-control">
+                    <input type="text" ng-model="search">
+                    <button ng-click="click()">Search</button>
 
-                                                        </div>
-                                                        <div class="col-md-6 form-group">
-                                                            <span class="input-group-btn input-group-sm">
-                                                                <button  ng-click="detailes.poster.movieUrl=''"
-                                                                        type="button" 
-                                                                        class="btn btn-info btn-fab btn-fab-sm del-btn">
-                                                                    <i class="zmdi  zmdi-delete"></i>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group is-empty col-md-6 pull-right">
-                                                            <div class="input-group">
-                                                                <input onchange="angular.element(this).scope().posterImageUpload(this)"
-                                                                       type="file"
-                                                                       class="form-control"
-                                                                       accept="image/x-png,image/gif,image/jpeg">
-                                                                <div class="input-group">
-                                                                    <input ng-model="detailes.poster.imageUrl"
-                                                                           type="text"
-                                                                           readonly=""
-                                                                           class="form-control"
-                                                                           placeholder="העלה תמונה של הפוסטר..."
-                                                                           accept="image/x-png,image/gif,image/jpeg">
-                                                                    <span class="input-group-btn input-group-sm">
-                                                                        <button
-                                                                                type="button"
-                                                                                class="btn btn-info btn-fab btn-fab-sm">
-                                                                            <i class="zmdi zmdi-camera"></i>
-                                                                        </button>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 form-group">
-                                                            <span class="input-group-btn input-group-sm">
-                                                                <button  ng-click="detailes.poster.imageUrl=''"
-                                                                        type="button" 
-                                                                        class="btn btn-info btn-fab btn-fab-sm del-btn">
-                                                                    <i class="zmdi  zmdi-delete"></i>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group is-empty col-md-6 pull-right">
-                                                            <div class="input-group">
-                                                                <input onchange="angular.element(this).scope().posterfileUpload(this)"
-                                                                       type="file"
-                                                                       class="form-control"
-                                                                       placeholder="File Upload..."
-                                                                       multiple>
-                                                                <div class="input-group">
-                                                                    <input ng-model="detailes.poster.fileUrl"
-                                                                           type="text"
-                                                                           readonly=""
-                                                                           class="form-control"
-                                                                           placeholder="העלה פוסטר...">
-                                                                    <span class="input-group-btn input-group-sm">
-                                                                        <button type="button" class="btn btn-primary btn-fab btn-fab-sm">
-                                                                            <i class="zmdi zmdi-attachment-alt"></i>
-                                                                        </button>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 form-group">
-                                                            <span class="input-group-btn input-group-sm">
-                                                                <button  ng-click="detailes.poster.fileUrl=''"
-                                                                        type="button" 
-                                                                        class="btn btn-info btn-fab btn-fab-sm del-btn">
-                                                                    <i class="zmdi  zmdi-delete"></i>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <!--end #tab2 -->
-                                            <div class="tab-pane" id="tab3" dir="rtl">
-                                                <form class="text-right" role="form">
-                                                    <div class="row">
-                                                        <div class="col-sm-12 col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="" class="control-label">מרצה</label>
-                                                                <select class="form-control" ng-model="detailes.general.advisor.name">
-                                                                    <option ng-repeat="x in advisorArr"
-                                                                            ng-selected="x.name==detailes.general.advisor.name"
-                                                                            value="{{x.name}}">
-                                                                        {{x.name}}
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="" class="control-label">שנה</label>
-                                                                <select ng-model="detailes.general.year"
-                                                                        class="form-control">
-                                                                    <option ng-repeat="x in year"
-                                                                            ng-selected="x==detailes.general.year"
-                                                                            value="{{x}}">
-                                                                        {{x}}
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="" class="control-label">מחלקה</label>
-                                                                <select ng-disabled="true" class="form-control">
-                                                                    <option value="detailes.general.department">{{detailes.general.department}}</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="" class="control-label">תחום</label>
-                                                                <select ng-model="detailes.general.area.desc"
-                                                                        class="form-control">
-                                                                    <option ng-repeat="x in areaNameArr"
-                                                                            ng-selected="x.val==detailes.general.area.desc"
-                                                                            value="{{x.val}}">
-                                                                        {{x.val}}
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="" class="control-label">סוג</label>
-                                                                <select ng-model="detailes.general.area.name"
-                                                                        class="form-control">
-                                                                    <option ng-repeat="x in areaTypeArr"
-                                                                            ng-selected="x.desc==detailes.general.area.name"
-                                                                            value="{{x.desc}}">
-                                                                        {{x.desc}}
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <!--end #tab3 -->
-                                            <div class="tab-pane" id="tab4" dir="rtl">
-                                                <div class="table-responsive border-grey-bottom-1px m-b-20 m-t-20">
-                                                    <table class="table table-hover product-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th data-orderable="false" class="col-xs-2">
-                                                                    <button class="btn btn-primary btn-fab  animate-fab"
-                                                                            data-toggle="modal"
-                                                                            data-target="#newContactModal">
-                                                                        <i class="zmdi zmdi-plus"></i>
-                                                                    </button>
-                                                                </th>
-                                                                <th class="col-xs-2">שם מלא</th>
-                                                                <th class="col-xs-2">דואר אלקטרוני</th>
-                                                                <th class="col-xs-2">טלפון</th>
-                                                                <th class="col-xs-1">תמונה</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="(key,member) in team">
-                                                                <td></td>
-                                                                <td ng-bind="member.firstName + ' ' + member.lastName"></td>
-                                                                <td ng-bind="member.email"></td>
-                                                                <td ng-bind="member.phone"></td>
-                                                                <td>
-                                                                    <div class="text-right">
-                                                                        <span class="avatar"><img ng-src="{{member.imageUrl}}" alt="" class="img-circle max-w-40"></span>
-                                                                        <span ng-bind="member.firstName"
-                                                                              class="name block m-t-10 m-b-10"></span>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a ng-click="set(member)"
-                                                                       href="javascript:void(0)"
-                                                                       data-toggle="modal"
-                                                                       data-target="#editContactModal"
-                                                                       class="icon edit-customer">
-                                                                        <i class="zmdi zmdi-edit m-0">
-                                                                        </i>
-                                                                    </a>
-                                                                    <a ng-click="remove(key)"
-                                                                       href="javascript:void(0)"
-                                                                       class="icon edit-customer">
-                                                                        <i class="zmdi zmdi-delete m-0">
-                                                                        </i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="tab5" dir="rtl">
-                                                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                                                    <div class="card" id="packages">
-                                                        <header class="card-heading ">
-                                                            <h2 class="card-title text-green">כמעט סיימנו!</h2>
-                                                        </header>
-                                                        <div class="card-body">
-                                                            <p>לסיום לחץ שמור</p>
-                                                            <p>
-                                                                <br />
-                                                                <a href="users/group/preview.html" target="_blank">
-                                                                    <button ng-click="previewProject()"
-                                                                            class="btn btn-primary btn-fab"
-                                                                            data-toggle="tooltip"
-                                                                            data-placement="top"
-                                                                            title=""
-                                                                            data-original-title="תצוגה מקדימה">
-                                                                        <i class="zmdi zmdi-eye"></i>
-                                                                    </button>
-                                                                </a>
-                                                                <br />
-                                                                <div class="togglebutton m-t-20 ">
-                                                                    <label>
-                                                                        פרסם את הפרויקט כדי שכולם יוכלו לצפות בו
-                                                                        <input type="checkbox" 
-                                                                               ng-model=""
-                                                                               ng-click="groupStateChange()"
-                                                                               ng-checked="groupState.published"
-                                                                               class="toggle-success" 
-                                                                               id="toggle-price">
-                                                                    </label>
-                                                                </div>
-                                                            </p>
+                    <ul>
+                        <li ng-repeat="result in results">{{result}}</li>
+                    </ul>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <ul class="pager wizard">
-                                        <li class="previous disabled"><a class="btn btn-primary btn-round" href="javascript:void(0);">הקודם</a></li>
-                                        <li class="next"><a class="btn btn-primary btn-round" href="javascript:void(0);">המשך</a></li>
-                                        <li class="finish"><button ng-click="saveChanges()" class="btn btn-green btn-round pull-right">שמור</button></li>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-body" style="padding-left:135px;padding-right:135px;">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <div class="card sales-card">
+                        <header class="card-heading ">
+                            <h2 class="card-title">Total points current sprint</h2>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Today</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 7 Days</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 30 Days</a>
+                                        </li>
                                     </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body totalSales">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div id="totalSales" class="progressBar"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h2 class="timer money" data-from="0" data-to="6200" data-speed="1000" data-refresh-interval="50"></h2>
+                                    <span class="timer orders block" data-from="0" data-to="190" data-speed="1000" data-refresh-interval="50"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="card sales-card">
+                        <header class="card-heading ">
+                            <h2 class="card-title">Total points previous sprint</h2>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Today</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 7 Days</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 30 Days</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body newSignups">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div id="newSignups" class="progressBar"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h2 class="timer" data-from="0" data-to="420" data-speed="1000" data-refresh-interval="50"></h2>
+                                    <span class="timer users block" data-from="0" data-to="967" data-speed="1000" data-refresh-interval="50"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="card sales-card">
+                        <header class="card-heading ">
+                            <h2 class="card-title">Total recommended points</h2>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Today</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 7 Days</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 30 Days</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body totalSales">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div id="totalSales" class="progressBar"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h2 class="timer money" data-from="0" data-to="6200" data-speed="1000" data-refresh-interval="50"></h2>
+                                    <span class="timer orders block" data-from="0" data-to="190" data-speed="1000" data-refresh-interval="50"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="card sales-card">
+                        <header class="card-heading ">
+                            <h2 class="card-title">Completed</h2>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Today</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 7 Days</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 30 Days</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body newSignups">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div id="newSignups" class="progressBar"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h2 class="timer" data-from="0" data-to="420" data-speed="1000" data-refresh-interval="50"></h2>
+                                    <span class="timer users block" data-from="0" data-to="967" data-speed="1000" data-refresh-interval="50"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div ng-include="'users/group/modal/newMember.html'"></div>
-    </section>
-    <section id="auth_wrapper" dir="rtl">
-        <div ng-hide="currentGroup"
-             ng-controller="RegistrationController"
-             id="login_wrapper">
-            <div id="login_content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="logo" style="width:300px!important">
-                            <img src="../Ruppin_Academic_Center_Logo.svg.png" alt="logo" class="logo-img">
+
+            <div class="row" style="margin-top:100px;">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="card p-b-10">
+                        <header class="card-heading ">
+                            <h2 class="card-title">Drill down current sprint</h2>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle-expand="content-expanded" data-key="contentExpand">
+                                        <i class="zmdi zmdi-fullscreen"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Today</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 7 Days</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 30 Days</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body">
+                            <ul class="summary">
+                                <li>
+                                    <span class="block m-b-5">Added to cart</span>
+                                    <h2 class="timer percent" data-from="0" data-to="38" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                                <li>
+                                    <span class="block m-b-5">Reached checkout</span>
+                                    <h2 class="timer percent" data-from="0" data-to="32" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                                <li>
+                                    <span class="block m-b-5">Purchased</span>
+                                    <h2 class="timer percent" data-from="0" data-to="17" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                                <li>
+                                    <span class="block m-b-5">Cancelled</span>
+                                    <h2 class="timer percent" data-from="0" data-to="3" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <canvas id="conversionStats" width="1200" height="400"></canvas>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="card">
+                        <header class="card-heading">
+                            <h2 class="card-title">Points by sprint</h2>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Option One</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Option Two</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Option Three</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body">
+                            <div id="morris_area_chart"></div>
                         </div>
                     </div>
                 </div>
-                <h1 class="login-title">
-                    כניסה סטודנטים
-                </h1>
-                <div class="login-body">
-                    <form name="myform" class="no-nav" novalidate autocomplete="off"
-                          ng-submit="login()">
-                        <div class="form-group label-floating is-empty">
-                            <!--<label class="control-label">דואר אלקטרוני</label>-->
-                            <input ng-model="user.email"
-                                   name="email"
-                                   ng-required="true"
-                                   type="email"
-                                   placeholder="דואר אלקטרוני"
-                                   class="form-control">
-                            <p class="error validationerrore"
-                               ng-show="myform.email.$invalid && myform.email.$touched">
-                                דוא"ל שגוי
-                            </p>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="card">
+                        <header class="card-heading ">
+                            <h2 class="card-title">Drill down by sprint</h2>
+                            <small>Paleo flexitarian bushwick letterpress</small>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Option One</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Option Two</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Option Three</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body">
+                            <div class="chart">
+                                <div id="c3_stacked-bars-chart"></div>
+                            </div>
                         </div>
-                        <div class="form-group label-floating is-empty">
-                            <!--<label class="control-label">סיסמה</label>-->
-                            <input ng-model="user.password"
-                                   ng-required="true"
-                                   ng-minlength="6"
-                                   placeholder="סיסמה"
-                                   name="password"
-                                   type="password"
-                                   class="form-control">
-                            <p class="error validationerrore"
-                               ng-show="myform.password.$invalid && myform.password.$touched">
-                                הסיסמה חייבת להכיל לפחות 6 תווים
-                            </p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="card p-b-10">
+                        <header class="card-heading ">
+                            <h2 class="card-title">Commitment vs. Completed</h2>
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle-expand="content-expanded" data-key="contentExpand">
+                                        <i class="zmdi zmdi-fullscreen"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="refresh">
+                                        <i class="zmdi zmdi-refresh-alt"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                        <i class="zmdi zmdi-more-vert"></i>
+                                    </a>
+                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)">Today</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 7 Days</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Last 30 Days</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body">
+                            <ul class="summary">
+                                <li>
+                                    <span class="block m-b-5">Added to cart</span>
+                                    <h2 class="timer percent" data-from="0" data-to="38" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                                <li>
+                                    <span class="block m-b-5">Reached checkout</span>
+                                    <h2 class="timer percent" data-from="0" data-to="32" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                                <li>
+                                    <span class="block m-b-5">Purchased</span>
+                                    <h2 class="timer percent" data-from="0" data-to="17" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                                <li>
+                                    <span class="block m-b-5">Cancelled</span>
+                                    <h2 class="timer percent" data-from="0" data-to="3" data-speed="1000" data-refresh-interval="50"></h2>
+                                </li>
+                            </ul>
                         </div>
-                        <!--<a href="javascript:void(0)" class="forgot-pass pull-right">Forgot Password?</a>-->
-                        <button type="submit"
-                                ng-disabled="myform.$invalid"
-                                class="btn btn-info btn-block m-t-40">
-                            היכנס
-                        </button>
-                    </form>
-                    <p class="error text-center" style="padding:15px;" ng-show="message">{{message}}</p>
+
+                        <canvas id="salesStats" width="1200" height="400"></canvas>
+
+                    </div>
                 </div>
             </div>
         </div>
+
     </section>
 
 
+    <!--// Initialize Firebase-->
+    <script src="../js/inizialize.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.0.7/rx.lite.compat.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+
+    <script src="../js/app.js"></script>
+    <script src="../Scripts/rx.angular.js"></script>
+
+
+    <!--controllers-->
+    <script src="../js/controllers/group.js"></script>
+
+    <!--Networks-->
+    <script src="../js/Networks/http/httpInterceptor.js"></script>
+    <script src="../js/Networks/ApiConstants.js"></script>
+
+
+
+
     <script src="../assets/js/vendor.bundle.js"></script>
-    <!--<script src="../assets/js/app.bundle.js"></script>-->
+    <script src="../assets/js/app.bundle.js"></script>
 </body>
 </html>

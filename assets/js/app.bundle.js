@@ -3054,20 +3054,16 @@
 	    if ($('#morris_area_chart').length) {
 	        var data = [{
 	            y: '2016',
-	            a: 35,
-	            b: 90
+	            a: 35
 	        }, {
 	            y: '2017',
-	            a: 45,
-	            b: 75
+	            a: 45
 	        }, {
 	            y: '2018',
-	            a: 55,
-	            b: 50
+	            a: 55
 	        }, {
 	            y: '2019',
-	            a: 65,
-	            b: 60
+	            a: 65
 	        }, {
 	            y: '2020',
 	            a: 75,
@@ -3100,7 +3096,7 @@
 	            config = {
 	            data: data,
 	            xkey: 'y',
-	            ykeys: ['a', 'b'],
+	            ykeys: ['a'],
 	            labels: ['Total Income', 'Total Outcome'],
 	            fillOpacity: 0.6,
 	            hideHover: 'auto',
