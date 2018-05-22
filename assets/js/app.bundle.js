@@ -5522,7 +5522,7 @@
 	};
 	var todaysSales = function todaysSales() {
 	  if ($('#totalSales').length) {
-	    var newSales = new ProgressBar.Circle('#totalSales', {
+	   var  newSales = new ProgressBar.Circle('#totalSales', {
 	      color: '#fb4869',
 	      strokeWidth: 3,
 	      trailWidth: 3,
@@ -5534,7 +5534,7 @@
 	        bar.setText((bar.value() * 100).toFixed(0) + "%");
 	      }
 	    });
-	    newSales.animate(0.8);
+	    newSales.animate(0.5);
 	  }
 	};
 	var newUsers = function newUsers() {

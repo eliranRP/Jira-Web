@@ -79,18 +79,25 @@
                 .toArray()
             )
 
-
-        var sprintObservable = observeOnScope($scope, 'selectedSprint')
+        observeOnScope($scope, 'selectedSprint')
             .combineLatest(usersObservable)
             .map(data => {
-                return { group: data[1], sprintId: data[0].newValue.id+"" }
+                return { group: data[1], sprintId: data[0].newValue.id + "" }
             })
             .flatMap(data => issueDbController.getSumOfGroup(data.group, data.sprintId))
             .subscribe(function (results) {
                 console.log("results from combineLatest: ", results)
+
+                // Create complete points 
+                utils.createProgressBar("#completedPoints", '#fb4869', results.donePoints / results.sumAllPoints)
+
+
             }, function (e) {
                 console.log("error: ", e)
             });
 
+
+
+        
 
     }]);
