@@ -19,34 +19,80 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+
+    <!-- Add additional services you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-functions.js"></script>
+
+    <script src="../Scripts/rx.all.js"></script>
 
 
-
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-storage.js"></script>
-
-
+    <script src="../Scripts/rx.angular.js"></script>
 
     <title> test-jira </title>
 
 </head>
-<body ng-cloak>
+<body ng-cloak ng-controller="AppCtrl">
 
     <section id="content_outer_wrapper"
              style="padding-left:0px!important;">
         <div id="content_wrapper">
             <div id="content" class="container">
-                <div class="container" ng-controller="AppCtrl">
+                <div class="container">
+                    <div class="card">
+                        <header class="card-heading">
+                            <!--<h2 class="card-title">Flat Button Dropdowns</h2>-->
+                        </header>
+                        <div class="card-body">
+                            <!--<p>Turn a flat button into a dropdown toggle with some basic markup changes.</p>-->
+                            <div id="sprint-list" class="btn-group">
+                                <button type="button" class="btn btn-primary  btn-flat dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span ng-model="selectedSprint">{{selectedSprint.name}}</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="item in sprints  track by $index" ng-click="sprintClick(sprints[$index],sprints[$index+1])"><a href="#">{{item.name}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary  btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Choose users <span class="caret"></span>
+                                </button>
 
-                    <input type="text" ng-model="search">
-                    <button ng-click="click()">Search</button>
+                                <ul class="dropdown-menu">
+                                    <li class="list-group-item" ng-repeat="item in users  track by $index">
+                                        <!--<div class="row-action-primary">
+                                            <i class="zmdi zmdi-folder circle mw-blue"></i>
+                                        </div>-->
+                                        <div class="row-content">
+                                            <div class="least-content">
+                                                <span class="checkbox">
+                                                    <label>
+                                                        <input ng-change="click(item)" data-ng-model="item.isSelected" type="checkbox">
+                                                    </label>
+                                                    <span class="list-group-item-text">{{item.displayName}}</span>
+                                                </span>
+                                            </div>
 
-                    <ul>
-                        <li ng-repeat="result in results">{{result}}</li>
-                    </ul>
+                                        </div>
+                                    </li>
+                                </ul>
 
+                            </div>
+                            <div ng-repeat="selected in selectedUsers" class="chip dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img ng-src="{{selected.avatarUrls['48x48']}}" alt="Contact Person"> {{selected.displayName}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,39 +102,23 @@
                 <div class="col-xs-12 col-sm-3">
                     <div class="card sales-card">
                         <header class="card-heading ">
-                            <h2 class="card-title">Total points current sprint</h2>
+                            <h2 class="card-title">Total points <strong>{{selectedSprint.name}}</strong></h2>
                             <ul class="card-actions icons right-top">
                                 <li>
                                     <a href="javascript:void(0)" data-toggle="refresh">
                                         <i class="zmdi zmdi-refresh-alt"></i>
                                     </a>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0)" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
-                                        <li>
-                                            <a href="javascript:void(0)">Today</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 7 Days</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 30 Days</a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </ul>
                         </header>
                         <div class="card-body totalSales">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div id="totalSales" class="progressBar"></div>
+                                    <div id="currentPointsAccomplish" class="progressBar"></div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <h2 class="timer money" data-from="0" data-to="6200" data-speed="1000" data-refresh-interval="50"></h2>
-                                    <span class="timer orders block" data-from="0" data-to="190" data-speed="1000" data-refresh-interval="50"></span>
+                                <div class="col-sm-6" ng-model="res">
+                                    <h2>{{res.donePoints}}</h2>
+                                    <span>From  <span>{{res.sumAllPoints}}</span> points </span>
                                 </div>
                             </div>
                         </div>
@@ -97,39 +127,23 @@
                 <div class="col-xs-12 col-sm-3">
                     <div class="card sales-card">
                         <header class="card-heading ">
-                            <h2 class="card-title">Total points previous sprint</h2>
+                            <h2 class="card-title">Total points <strong>{{prevSprint.name}}</strong></h2>
                             <ul class="card-actions icons right-top">
                                 <li>
                                     <a href="javascript:void(0)" data-toggle="refresh">
                                         <i class="zmdi zmdi-refresh-alt"></i>
                                     </a>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0)" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
-                                        <li>
-                                            <a href="javascript:void(0)">Today</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 7 Days</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 30 Days</a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </ul>
                         </header>
                         <div class="card-body newSignups">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div id="newSignups" class="progressBar"></div>
+                                    <div id="previousPointsAccomplish" class="progressBar"></div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h2 class="timer" data-from="0" data-to="420" data-speed="1000" data-refresh-interval="50"></h2>
-                                    <span class="timer users block" data-from="0" data-to="967" data-speed="1000" data-refresh-interval="50"></span>
+                                    <h2>{{resPrev.donePoints}}</h2>
+                                    <span>From  <span>{{resPrev.sumAllPoints}}</span> points </span>
                                 </div>
                             </div>
                         </div>
@@ -145,33 +159,14 @@
                                         <i class="zmdi zmdi-refresh-alt"></i>
                                     </a>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0)" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
-                                        <li>
-                                            <a href="javascript:void(0)">Today</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 7 Days</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 30 Days</a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </ul>
                         </header>
                         <div class="card-body totalSales">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div id="totalSales" class="progressBar"></div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h2 class="timer money" data-from="0" data-to="6200" data-speed="1000" data-refresh-interval="50"></h2>
-                                    <span class="timer orders block" data-from="0" data-to="190" data-speed="1000" data-refresh-interval="50"></span>
-                                </div>
+                                <h1 style="text-align:  center;font-size: 80px;">
+                                    {{recomendedPoints | number:1}}
+                                    <span style="font-size:20px">   Avg.</span>
+                                </h1>
                             </div>
                         </div>
                     </div>
@@ -179,40 +174,20 @@
                 <div class="col-xs-12 col-sm-3">
                     <div class="card sales-card">
                         <header class="card-heading ">
-                            <h2 class="card-title">Completed</h2>
+                            <h2 class="card-title">Improvment</h2>
                             <ul class="card-actions icons right-top">
                                 <li>
                                     <a href="javascript:void(0)" data-toggle="refresh">
                                         <i class="zmdi zmdi-refresh-alt"></i>
                                     </a>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0)" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
-                                        <li>
-                                            <a href="javascript:void(0)">Today</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 7 Days</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 30 Days</a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </ul>
                         </header>
-                        <div class="card-body newSignups">
+                        <div class="card-body totalSales">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div id="newSignups" class="progressBar"></div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h2 class="timer" data-from="0" data-to="420" data-speed="1000" data-refresh-interval="50"></h2>
-                                    <span class="timer users block" data-from="0" data-to="967" data-speed="1000" data-refresh-interval="50"></span>
-                                </div>
+                                <h1 style="text-align:  center;font-size: 80px;">
+                                    {{((res.donePoints-resPrev.donePoints)/(resPrev.donePoints+res.donePoints))*100 | number:0}} %
+                                </h1>
                             </div>
                         </div>
                     </div>
@@ -415,20 +390,33 @@
     <script src="../js/inizialize.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.0.7/rx.lite.compat.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 
+
     <script src="../js/app.js"></script>
-    <script src="../Scripts/rx.angular.js"></script>
+
+
+    <!--Utils-->
+    <script src="../js/Utils/utils.js"></script>
+    <script src="../js/services/storageService.js"></script>
+
+    <!--sprint-->
+    <script src="../js/database/sprints/sprintsConstants.js"></script>
+    <script src="../js/database/sprints/sprintDbController.js"></script>
+
+    <!--issue-->
+    <script src="../js/database/issues/issuesConstants.js"></script>
+    <script src="../js/database/issues/issueDbController.js"></script>
+
+
+    <!--user-->
+    <script src="../js/database/users/usersConstants.js"></script>
+    <script src="../js/database/users/usersDbController.js"></script>
 
 
     <!--controllers-->
     <script src="../js/controllers/group.js"></script>
 
-    <!--Networks-->
-    <script src="../js/Networks/http/httpInterceptor.js"></script>
-    <script src="../js/Networks/ApiConstants.js"></script>
 
 
 

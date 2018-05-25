@@ -1,0 +1,1663 @@
+﻿{
+  "expand": "schema,names",
+  "startAt": 100,
+  "maxResults": 50,
+  "total": 108,
+  "issues": [
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24974",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24974",
+      "key": "GEET-54",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "fixVersions": [],
+        "customfield_10110": "",
+        "customfield_10111": "",
+        "aggregatetimespent": null,
+        "customfield_10112": null,
+        "resolution": null,
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t13:",
+        "customfield_10104": "",
+        "customfield_10105": "",
+        "customfield_10106": "",
+        "customfield_10107": "",
+        "customfield_10108": "",
+        "customfield_10109": "",
+        "resolutiondate": null,
+        "workratio": -1,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-54/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "lastViewed": null,
+        "created": "2018-05-22T10:42:22.050+0300",
+        "epic": null,
+        "customfield_10100": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/4",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/low.svg",
+          "name": "Low",
+          "id": "4"
+        },
+        "customfield_10101": null,
+        "customfield_10102": null,
+        "customfield_10300": null,
+        "customfield_10103": "",
+        "labels": [],
+        "timeestimate": null,
+        "aggregatetimeoriginalestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T10:42:22.050+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/10000",
+          "description": "",
+          "iconUrl": "https://moveogroup.atlassian.net/",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10402": null,
+        "customfield_10006": null,
+        "security": null,
+        "customfield_10007": null,
+        "attachment": [],
+        "aggregatetimeestimate": null,
+        "flagged": false,
+        "summary": "במסך של  what do you want us to take care of, הכל אמור להיות במסומן כדיפולט ואמורים להיות שם עוד אלמנטים",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10000": "{}",
+        "customfield_10001": null,
+        "customfield_10200": null,
+        "customfield_10002": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": null,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-54/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24975",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24975",
+      "key": "GEET-55",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "fixVersions": [],
+        "customfield_10110": null,
+        "aggregatetimespent": null,
+        "customfield_10111": null,
+        "resolution": null,
+        "customfield_10112": null,
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t1b:",
+        "customfield_10104": null,
+        "customfield_10105": null,
+        "customfield_10106": null,
+        "customfield_10107": null,
+        "customfield_10108": null,
+        "customfield_10109": null,
+        "resolutiondate": null,
+        "workratio": -1,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-55/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "lastViewed": null,
+        "created": "2018-05-22T10:42:31.650+0300",
+        "epic": null,
+        "customfield_10100": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/4",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/low.svg",
+          "name": "Low",
+          "id": "4"
+        },
+        "customfield_10101": null,
+        "customfield_10300": null,
+        "customfield_10102": null,
+        "customfield_10103": null,
+        "labels": [],
+        "timeestimate": null,
+        "aggregatetimeoriginalestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T10:42:31.650+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/10000",
+          "description": "",
+          "iconUrl": "https://moveogroup.atlassian.net/",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10402": null,
+        "customfield_10006": null,
+        "customfield_10007": null,
+        "security": null,
+        "aggregatetimeestimate": null,
+        "attachment": [],
+        "flagged": false,
+        "summary": "חסר OTHER במסך של הדמויות.",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10000": "{}",
+        "customfield_10001": null,
+        "customfield_10002": null,
+        "customfield_10200": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": null,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-55/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24976",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24976",
+      "key": "GEET-56",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "fixVersions": [],
+        "customfield_10110": null,
+        "customfield_10111": null,
+        "aggregatetimespent": null,
+        "customfield_10112": null,
+        "resolution": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/resolution/10000",
+          "id": "10000",
+          "description": "Work has been completed on this issue.",
+          "name": "Done"
+        },
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t1j:",
+        "customfield_10104": null,
+        "customfield_10105": null,
+        "customfield_10106": null,
+        "customfield_10107": null,
+        "customfield_10108": null,
+        "customfield_10109": null,
+        "resolutiondate": "2018-05-22T14:45:57.010+0300",
+        "workratio": -1,
+        "lastViewed": null,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-56/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "created": "2018-05-22T10:42:40.078+0300",
+        "epic": null,
+        "customfield_10100": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/4",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/low.svg",
+          "name": "Low",
+          "id": "4"
+        },
+        "customfield_10101": "3_*:*_1_*:*_19059_*|*_10000_*:*_1_*:*_14577882_*|*_10001_*:*_1_*:*_0",
+        "customfield_10300": null,
+        "customfield_10102": null,
+        "labels": [],
+        "customfield_10103": null,
+        "aggregatetimeoriginalestimate": null,
+        "timeestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T14:45:57.015+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/10001",
+          "description": "",
+          "iconUrl": "https://moveogroup.atlassian.net/",
+          "name": "Done",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10006": null,
+        "customfield_10402": null,
+        "customfield_10007": null,
+        "security": null,
+        "aggregatetimeestimate": null,
+        "attachment": [],
+        "flagged": false,
+        "summary": "שתי הערות ששלחנו על הדמויות - לא צריך את היפה והחיה פעמיים (פעם אחת עם החיה ופעם שני בלי) והשני הוא שאם יש את dory אולי צריך את נמו? (להוסיף לא חשוב לגירסה הזאת)",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10000": "{}",
+        "customfield_10001": null,
+        "customfield_10002": null,
+        "customfield_10200": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": 1,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-56/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24977",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24977",
+      "key": "GEET-57",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "customfield_10110": null,
+        "fixVersions": [],
+        "customfield_10111": null,
+        "aggregatetimespent": null,
+        "customfield_10112": null,
+        "resolution": null,
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t1r:",
+        "customfield_10104": null,
+        "customfield_10105": null,
+        "customfield_10106": null,
+        "customfield_10107": null,
+        "customfield_10108": null,
+        "customfield_10109": null,
+        "resolutiondate": null,
+        "workratio": -1,
+        "lastViewed": null,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-57/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "created": "2018-05-22T10:42:47.366+0300",
+        "epic": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/4",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/low.svg",
+          "name": "Low",
+          "id": "4"
+        },
+        "customfield_10100": null,
+        "customfield_10101": null,
+        "customfield_10102": null,
+        "customfield_10300": null,
+        "labels": [],
+        "customfield_10103": null,
+        "aggregatetimeoriginalestimate": null,
+        "timeestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T20:18:18.009+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/10000",
+          "description": "",
+          "iconUrl": "https://moveogroup.atlassian.net/",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10006": null,
+        "customfield_10402": null,
+        "customfield_10007": null,
+        "security": null,
+        "attachment": [],
+        "aggregatetimeestimate": null,
+        "flagged": false,
+        "summary": "חסרות האנימציות (בלונים וקונפטי)... זה חלק חשוב מהוואו אפקט שאליו כיוונו כשהתכוונו שמשקיעים יכנסו לראות את המוצר.",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "customfield_10000": "{}",
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10001": null,
+        "customfield_10002": null,
+        "customfield_10200": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": null,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-57/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24978",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24978",
+      "key": "GEET-58",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "customfield_10110": null,
+        "fixVersions": [],
+        "customfield_10111": null,
+        "aggregatetimespent": null,
+        "resolution": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/resolution/10000",
+          "id": "10000",
+          "description": "Work has been completed on this issue.",
+          "name": "Done"
+        },
+        "customfield_10112": null,
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t1z:",
+        "customfield_10104": null,
+        "customfield_10105": null,
+        "customfield_10106": null,
+        "customfield_10107": null,
+        "customfield_10108": null,
+        "customfield_10109": null,
+        "resolutiondate": "2018-05-22T14:49:55.178+0300",
+        "workratio": -1,
+        "lastViewed": null,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-58/watchers",
+          "watchCount": 2,
+          "isWatching": false
+        },
+        "created": "2018-05-22T10:42:53.928+0300",
+        "epic": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/4",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/low.svg",
+          "name": "Low",
+          "id": "4"
+        },
+        "customfield_10100": "2018-05-22T14:49:48.541+0300",
+        "customfield_10101": "3_*:*_1_*:*_67956_*|*_10000_*:*_1_*:*_14753303_*|*_10001_*:*_1_*:*_0",
+        "customfield_10102": null,
+        "customfield_10300": null,
+        "customfield_10103": null,
+        "labels": [],
+        "aggregatetimeoriginalestimate": null,
+        "timeestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T14:49:55.183+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/10001",
+          "description": "",
+          "iconUrl": "https://moveogroup.atlassian.net/",
+          "name": "Done",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10402": null,
+        "customfield_10006": null,
+        "security": null,
+        "customfield_10007": null,
+        "attachment": [],
+        "aggregatetimeestimate": null,
+        "flagged": false,
+        "summary": "ריווחים בין העיגולים בכל העמודים",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=Asaf",
+          "name": "Asaf",
+          "key": "asaf",
+          "accountId": "557058:c7b7ef0d-c6c8-47ef-a41a-5673d0b731fb",
+          "emailAddress": "asaf@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=48&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3FavatarId%3D10349%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=24&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=16&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dxsmall%26avatarId%3D10349%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/887ca145103ee255230dd7c8ed47554c?s=32&d=https%3A%2F%2Fmoveogroup.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10349%26noRedirect%3Dtrue"
+          },
+          "displayName": "Asaf Goldstof",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10000": "{}",
+        "customfield_10001": null,
+        "customfield_10200": null,
+        "customfield_10002": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": null,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-58/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "comment": {
+          "comments": [
+            {
+              "self": "https://moveogroup.atlassian.net/rest/api/2/issue/24978/comment/13143",
+              "id": "13143",
+              "author": {
+                "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+                "name": "elad",
+                "key": "elad",
+                "accountId": "5a69a3f6031a591456af4186",
+                "emailAddress": "elad@moveo.co.il",
+                "avatarUrls": {
+                  "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+                  "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+                  "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+                  "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+                },
+                "displayName": "Elad Mizrahi",
+                "active": true,
+                "timeZone": "Asia/Amman"
+              },
+              "body": "leaving this task without  story points to not mess-up the accuracy of the sprint.",
+              "updateAuthor": {
+                "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+                "name": "elad",
+                "key": "elad",
+                "accountId": "5a69a3f6031a591456af4186",
+                "emailAddress": "elad@moveo.co.il",
+                "avatarUrls": {
+                  "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+                  "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+                  "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+                  "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+                },
+                "displayName": "Elad Mizrahi",
+                "active": true,
+                "timeZone": "Asia/Amman"
+              },
+              "created": "2018-05-22T14:49:48.541+0300",
+              "updated": "2018-05-22T14:49:48.541+0300"
+            }
+          ],
+          "maxResults": 1,
+          "total": 1,
+          "startAt": 0
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24982",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24982",
+      "key": "GEET-59",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "customfield_10110": null,
+        "fixVersions": [],
+        "customfield_10111": null,
+        "aggregatetimespent": null,
+        "customfield_10112": null,
+        "resolution": null,
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t2v:",
+        "customfield_10104": null,
+        "customfield_10105": null,
+        "customfield_10106": null,
+        "customfield_10107": null,
+        "customfield_10108": null,
+        "customfield_10109": null,
+        "resolutiondate": null,
+        "workratio": -1,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-59/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "lastViewed": null,
+        "created": "2018-05-22T13:44:06.982+0300",
+        "epic": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/5",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/lowest.svg",
+          "name": "Lowest",
+          "id": "5"
+        },
+        "customfield_10100": null,
+        "customfield_10101": null,
+        "customfield_10102": null,
+        "customfield_10300": null,
+        "customfield_10103": null,
+        "labels": [],
+        "aggregatetimeoriginalestimate": null,
+        "timeestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T13:53:01.989+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/10000",
+          "description": "",
+          "iconUrl": "https://moveogroup.atlassian.net/",
+          "name": "To Do",
+          "id": "10000",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10402": null,
+        "customfield_10006": null,
+        "security": null,
+        "customfield_10007": null,
+        "aggregatetimeestimate": null,
+        "attachment": [],
+        "flagged": false,
+        "summary": "Add a pipe to the age to show suffix (th, rd, st, nd)",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10000": "{}",
+        "customfield_10001": null,
+        "customfield_10200": null,
+        "customfield_10002": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": 1,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-59/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24996",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24996",
+      "key": "GEET-60",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "customfield_10110": null,
+        "fixVersions": [],
+        "aggregatetimespent": null,
+        "customfield_10111": null,
+        "customfield_10112": null,
+        "resolution": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/resolution/10000",
+          "id": "10000",
+          "description": "Work has been completed on this issue.",
+          "name": "Done"
+        },
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t57:",
+        "customfield_10104": null,
+        "customfield_10105": null,
+        "customfield_10106": null,
+        "customfield_10107": null,
+        "customfield_10108": null,
+        "customfield_10109": null,
+        "resolutiondate": "2018-05-22T20:36:53.755+0300",
+        "workratio": -1,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-60/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "lastViewed": null,
+        "created": "2018-05-22T20:18:51.324+0300",
+        "epic": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/1",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/highest.svg",
+          "name": "Highest",
+          "id": "1"
+        },
+        "customfield_10100": null,
+        "customfield_10101": "3_*:*_1_*:*_997147_*|*_10000_*:*_1_*:*_85293_*|*_10001_*:*_1_*:*_0",
+        "customfield_10300": null,
+        "customfield_10102": null,
+        "labels": [],
+        "customfield_10103": null,
+        "timeestimate": null,
+        "aggregatetimeoriginalestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T20:36:53.760+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/10001",
+          "description": "",
+          "iconUrl": "https://moveogroup.atlassian.net/",
+          "name": "Done",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10006": null,
+        "customfield_10402": null,
+        "security": null,
+        "customfield_10007": null,
+        "attachment": [],
+        "aggregatetimeestimate": null,
+        "flagged": false,
+        "summary": "Fix overlapping text in the home page and logo-progressbar margin",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10000": "{}",
+        "customfield_10001": null,
+        "customfield_10002": null,
+        "customfield_10200": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": 1,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-60/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    },
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "24997",
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/issue/24997",
+      "key": "GEET-61",
+      "fields": {
+        "issuetype": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issuetype/10101",
+          "id": "10101",
+          "description": "A task that needs to be done.",
+          "iconUrl": "https://moveogroup.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+          "id": 421,
+          "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
+          "state": "active",
+          "name": "Bravo sprint 17",
+          "startDate": "2018-05-21T19:22:27.254Z",
+          "endDate": "2018-05-27T19:22:00.000Z",
+          "originBoardId": 202,
+          "goal": ""
+        },
+        "project": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/project/12014",
+          "id": "12014",
+          "key": "GEET",
+          "name": "Getoo",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://moveogroup.atlassian.net/secure/projectavatar?pid=12014&avatarId=11140",
+            "24x24": "https://moveogroup.atlassian.net/secure/projectavatar?size=small&pid=12014&avatarId=11140",
+            "16x16": "https://moveogroup.atlassian.net/secure/projectavatar?size=xsmall&pid=12014&avatarId=11140",
+            "32x32": "https://moveogroup.atlassian.net/secure/projectavatar?size=medium&pid=12014&avatarId=11140"
+          },
+          "projectCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/projectCategory/10001",
+            "id": "10001",
+            "description": "",
+            "name": "Active project"
+          }
+        },
+        "fixVersions": [],
+        "customfield_10110": null,
+        "aggregatetimespent": null,
+        "customfield_10111": null,
+        "customfield_10112": null,
+        "resolution": null,
+        "customfield_10113": [
+          "com.atlassian.greenhopper.service.sprint.Sprint@222f7e5e[id=421,rapidViewId=202,state=ACTIVE,name=Bravo sprint 17,goal=,startDate=2018-05-21T19:22:27.254Z,endDate=2018-05-27T19:22:00.000Z,completeDate=<null>,sequence=421]"
+        ],
+        "customfield_10114": "0|i01t5f:",
+        "customfield_10104": null,
+        "customfield_10105": null,
+        "customfield_10106": null,
+        "customfield_10107": null,
+        "customfield_10108": null,
+        "customfield_10109": null,
+        "resolutiondate": null,
+        "workratio": -1,
+        "watches": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-61/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "lastViewed": null,
+        "created": "2018-05-22T20:19:52.422+0300",
+        "epic": null,
+        "customfield_10100": null,
+        "priority": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/priority/1",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/priorities/highest.svg",
+          "name": "Highest",
+          "id": "1"
+        },
+        "customfield_10101": null,
+        "customfield_10102": null,
+        "customfield_10300": null,
+        "customfield_10103": null,
+        "labels": [],
+        "timeestimate": null,
+        "aggregatetimeoriginalestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "updated": "2018-05-22T20:36:59.679+0300",
+        "status": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/status/3",
+          "description": "This issue is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://moveogroup.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "Mon",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://moveogroup.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "components": [],
+        "timeoriginalestimate": null,
+        "description": null,
+        "timetracking": {},
+        "customfield_10401": null,
+        "customfield_10402": null,
+        "customfield_10006": null,
+        "customfield_10007": null,
+        "security": null,
+        "attachment": [],
+        "aggregatetimeestimate": null,
+        "flagged": false,
+        "summary": "Deploy in AWS with the new changes",
+        "creator": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "subtasks": [],
+        "reporter": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/user?username=elad",
+          "name": "elad",
+          "key": "elad",
+          "accountId": "5a69a3f6031a591456af4186",
+          "emailAddress": "elad@moveo.co.il",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/b8c0ec48cb9cb7abcfca3f14952410e2?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fb8c0ec48cb9cb7abcfca3f14952410e2%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "Elad Mizrahi",
+          "active": true,
+          "timeZone": "Asia/Amman"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10000": "{}",
+        "customfield_10001": null,
+        "customfield_10002": null,
+        "customfield_10200": null,
+        "customfield_10201": null,
+        "customfield_10400": null,
+        "customfield_10115": 1,
+        "environment": null,
+        "duedate": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "votes": {
+          "self": "https://moveogroup.atlassian.net/rest/api/2/issue/GEET-61/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "worklog": {
+          "startAt": 0,
+          "maxResults": 20,
+          "total": 0,
+          "worklogs": []
+        }
+      }
+    }
+  ]
+}
