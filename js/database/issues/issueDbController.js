@@ -37,29 +37,103 @@
                     .flatMap(prmise => Rx.Observable.fromPromise(prmise))
 
             },
+            groupQuery: {
+                bySprint: function (group, currentSprintId) {
+
+                    var promises = [];
+
+                    //Create a query
+                    group.forEach((user) => {
+                        promises.push(db.collection("issue")
+                            .where(issuesConstant.PRIMARY_KEY, "==", user.id)
+                            .where(issuesConstant.SPRINT_ID, "==", currentSprintId)
+                            .get())
+                    })
+
+                    return promises;
+                },
+                byProject: function (group, projectNames) {
+
+                    var promises = [];
+
+                    //Create a query
+                    group.forEach((user) => {
+                        promises.push(db.collection("issue")
+                            .where(issuesConstant.PRIMARY_KEY, "==", user.id)
+                            .where(issuesConstant.PROJECT_NAME, "==", projectName)
+                            .get())
+                    })
+
+                    return promises;
+                },
+                byStatus: function (group, status) {
+
+                    var promises = [];
+
+                    //Create a query
+                    group.forEach((user) => {
+                        promises.push(db.collection("issue")
+                            .where(issuesConstant.PRIMARY_KEY, "==", user.id)
+                            .where(issuesConstant.STATUS_NAME, "==", status)
+                            .get())
+                    })
+
+                    return promises;
+                },
+                byUser: function (group, projectNames) {
+
+                    var promises = [];
+
+                    //Create a query
+                    group.forEach((user) => {
+                        promises.push(db.collection("issue")
+                            .where(issuesConstant.PRIMARY_KEY, "==", user.id)
+                            .get())
+                    })
+
+                    return promises;
+                }
+            },
             //Return all issues by users id's
-            getListByGroup: function (group, sprintId) {
-
-                var promises = [];
-
-                //Create a query
-                group.forEach((user) => {
-                    promises.push(db.collection("issue")
-                        .where(issuesConstant.PRIMARY_KEY, "==", user.id)
-                        .where(issuesConstant.SPRINT_ID, "==", sprintId)
-                        .get())
-                })
-
+            getListByGroup: function (promises) {
                 //return observable with all filterd issues
                 return Rx.Observable.fromPromise(Promise.all(promises))
                     .flatMap(querySnapshot => Rx.Observable.from(querySnapshot))
-                    //.map(issue => {
-                    //    console.log('issues: ', issue)
-                    //    return issue
-                    //})
+                    .map(issue => {
+                        console.log('issues: ', issue)
+                        return issue
+                    })
                     .map(issue => issue.docs)
                     .flatMap(issues => Rx.Observable.from(issues))
                     .map(issue => issue.data())
+
+            },
+            getListGroupBy(promises) {
+                //return observable with all filterd issues
+                return Rx.Observable.fromPromise(Promise.all(promises))
+                    .flatMap(querySnapshot => Rx.Observable.from(querySnapshot))
+                    .map(issue => {
+                        console.log('issues: ', issue)
+                        return issue
+                    })
+                    .map(issue => issue.docs)
+                    .flatMap(issues => Rx.Observable.from(issues)
+                        .map(issue => issue.data())
+                        .groupBy(data => {
+                            return data.sprintId
+                        })
+                        .toArray())
+                    .map(groupBy => {
+                        console.log(" before groupBy: ", groupBy)
+                        return groupBy;
+                    })
+                    .groupBy(data => {
+                        return data.sprintId
+                    })
+                    .map(groupBy => {
+                        console.log(" after groupBy: ", groupBy)
+                        return groupBy;
+                    })
 
             },
             agrregation: {
@@ -81,30 +155,51 @@
                         .reduce((data, issue) => {
                             return {
                                 count: data.count += 1,
-                                sum: data.sum += Object.byString(issue, keySelector)
+                                sum: data.sum += Object.byString(issue, keySelector),
+                                sprints: function () {
+                                    data.sprints["'" + issue.sprintId + "'"] = issue
+                                    return data.sprints
+                                }()
                             }
-                        }, { count: 0, sum: 0 })
+                        }, { count: 0, sum: 0, sprints: [] })
+                        //Calculate the average
+                        .map(data => {
+                            return {
+                                sum: data.sum,
+                                count: Object.keys(data.sprints).length,
+                                average: data.sum / Object.keys(data.sprints).length
+                            }
+                        })
                 }
             },
-            doneIssues: function (data, issue,keySelector) {
+            doneIssues: function (data, issue, keySelector) {
                 if (issue.fields.status.name == "Done") {
                     return data.donePoints += Object.byString(issue, keySelector)
                 }
                 return data.donePoints;
             },
-            getSumOfGroup: function (group, sprintId, observableData) {
+            getSumOfGroup: function (group, currentSprintId, observableData) {
 
                 var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
-                if (observableData == null || observableData == undefined)
-                    observableData = serviceObject.getListByGroup(group, sprintId)
+                if (observableData == null || observableData == undefined) {
+                    var promises = serviceObject.groupQuery.bySprint(group, currentSprintId);
+                    observableData = serviceObject.getListByGroup(promises)
+
+                }
 
                 return serviceObject.agrregation.sum(keySelector, observableData)
             },
-            getAllDoneIssue: function (group, sprintId) {
-                var observableData = serviceObject.getListByGroup(group, sprintId)
-                    .filter(issue => issue.fields.status.name == "Done")
+            getRecomndedPoints: function (group, observableData) {
 
-                return serviceObject.getSumOfGroup(null, null, observableData)
+                var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
+                if (observableData == null || observableData == undefined) {
+                    var promises = serviceObject.groupQuery.byStatus(group, issuesConstant.STATUS.DONE);
+                    observableData = serviceObject.getListByGroup(promises)
+                    //.groupBy(data => data.sprintId)
+
+                }
+
+                return serviceObject.agrregation.average(keySelector, observableData)
             },
             loadSprintJson: function (path) {
                 return utils.loadJson(path)

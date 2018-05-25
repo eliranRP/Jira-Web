@@ -19,7 +19,7 @@
                     .flatMap(url => serviceObject.loadJson(url))
             },
 
-            createProgressBar: function (placeHolderId, color, value) {
+            createProgressBar: function (placeHolderId, color) {
                 if ($(placeHolderId).length) {
                     var progressbar = new ProgressBar.Circle(placeHolderId, {
                         color: '#fb4869',
@@ -33,10 +33,8 @@
                             bar.setText((bar.value() * 100).toFixed(0) + "%");
                         }
                     });
-                    if (value > 1) {
-                        value /= 100;
-                    }
                     return progressbar
+
                 }
             }
 

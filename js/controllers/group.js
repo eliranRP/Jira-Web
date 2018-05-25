@@ -8,7 +8,18 @@
         $scope.selectedUsers = [];
         $scope.select = '';
         $scope.query = '';
+        $scope.res = {};
 
+        var currentPointsAccomplish = utils.createProgressBar("#currentPointsAccomplish", "#fb4869");
+        var previousPointsAccomplish = utils.createProgressBar("#previousPointsAccomplish", "#42a5f5");// progressbar.animate(value);
+
+
+        //issueDbController.uploadSprint("../../../sprint_test.json", "421")
+        //    .subscribe(function (results) {
+        //        console.log("results: ", results)
+        //    }, function (e) {
+        //        console.log("error: ", e)
+        //    });
 
 
 
@@ -40,11 +51,27 @@
 
 
 
+        function contain(array, item) {
+
+            var found = false;
+            var position = -1;
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].accountId == item.accountId) {
+                    found = true;
+                    position = i;
+                    break;
+                }
+            }
+            return { isFound: found, position: position }
+        }
 
 
+        //Create selected users array
         function selectUser(user) {
+            isContain = contain($scope.selectedUsers, user)
             if (user.isSelected) {
-                $scope.selectedUsers.push(user);
+                if (!isContain.isFound)
+                    $scope.selectedUsers.push(user);
             } else {
 
                 for (var i = 0; i < $scope.selectedUsers.length; i++) {
@@ -57,18 +84,19 @@
                 .just($scope.selectedUsers)
         }
 
-
+        //Observe chosen sprint
         $scope.$createObservableFunction('sprintClick')
             .distinctUntilChanged()
             .safeApply($scope, function (result) {
-                $scope.selectedSprint = result
+                $scope.selectedSprint = result[0]
+                $scope.prevSprint = result[1]
             })
             .subscribe(function (results) {
                 $("#sprint-list").removeClass("open");
             });
 
 
-
+        //Observe chosen users
         var usersObservable = $scope.$createObservableFunction('click')
             .flatMapLatest(selectUser)
             .debounce(800)
@@ -79,17 +107,22 @@
                 .toArray()
             )
 
+
+        //Current sprint points
         observeOnScope($scope, 'selectedSprint')
             .combineLatest(usersObservable)
             .map(data => {
                 return { group: data[1], sprintId: data[0].newValue.id + "" }
             })
             .flatMap(data => issueDbController.getSumOfGroup(data.group, data.sprintId))
+            .safeApply($scope, function (result) {
+                $scope.res = result
+            })
             .subscribe(function (results) {
                 console.log("results from combineLatest: ", results)
 
                 // Create complete points 
-                utils.createProgressBar("#completedPoints", '#fb4869', results.donePoints / results.sumAllPoints)
+                currentPointsAccomplish.animate(results.donePoints / results.sumAllPoints)
 
 
             }, function (e) {
@@ -97,7 +130,45 @@
             });
 
 
+        //prev sprint points
+        observeOnScope($scope, 'prevSprint')
+            .combineLatest(usersObservable)
+            .map(data => {
+                if (data[0] != undefined && data[0].newValue != undefined && data[0].newValue.id != undefined)
+                    return { group: data[1], sprintId: data[0].newValue.id + "" }
+                else
+                    return { group: data[1], sprintId: "-1" }
 
-        
+            })
+            .flatMap(data => issueDbController.getSumOfGroup(data.group, data.sprintId))
+            .safeApply($scope, function (result) {
+                $scope.resPrev = result
+            })
+            .subscribe(function (results) {
+                console.log("results from combineLatest prev sprint: ", results)
+
+                previousPointsAccomplish.animate(results.donePoints / results.sumAllPoints)
+
+            }, function (e) {
+                console.log("error: ", e)
+            });
+
+
+
+        //Calculate recomended points per group
+        observeOnScope($scope, 'selectedUsers')
+            .combineLatest(usersObservable)
+            .flatMap(data => issueDbController.getRecomndedPoints(data[1]))
+            .safeApply($scope, function (result) {
+                $scope.recomendedPoints = result.average
+            })
+            .subscribe(function (results) {
+
+                console.log("Recomnded points for a group: ", results)
+
+            }, function (e) {
+                console.log("error: ", e)
+            });
+
 
     }]);
