@@ -1,5 +1,7 @@
-﻿MainApp.controller('AppCtrl', ['$scope', 'rx', 'observeOnScope', 'utils', 'sprintDbController', 'issueDbController', 'userDbController',
-    function ($scope, rx, observeOnScope, utils, sprintDbController, issueDbController, userDbController) {
+﻿MainApp.controller('AppCtrl', ['$scope', 'rx', 'observeOnScope', 'utils', 'sprintDbController', 'issueDbController',
+    'userDbController','graphService',
+    function ($scope, rx, observeOnScope, utils, sprintDbController, issueDbController,
+        userDbController, graphService) {
         //Select sprint
         $scope.selectedSprint = {
             name: 'Select sprint', id: '-1'
@@ -14,12 +16,27 @@
         var previousPointsAccomplish = utils.createProgressBar("#previousPointsAccomplish", "#42a5f5");// progressbar.animate(value);
 
 
+        //Graphs
+        var areaDoneVsNotDone = graphService.Area.create('morris_area_chart1',
+            null,
+            'name',
+            ['donePoints', 'notDonePoints'],
+            ['Done', 'Not done'])
+
+
+
+
         //issueDbController.uploadSprint("../../../sprint_test.json", "421")
         //    .subscribe(function (results) {
         //        console.log("results: ", results)
         //    }, function (e) {
         //        console.log("error: ", e)
         //    });
+
+
+
+
+
 
 
 
@@ -154,7 +171,7 @@
             });
 
 
-
+        var graph;
         //Calculate recomended points per group
         observeOnScope($scope, 'selectedUsers')
             .combineLatest(usersObservable)
@@ -163,8 +180,25 @@
                 $scope.recomendedPoints = result.average
             })
             .subscribe(function (results) {
-
+              
+                //if (graph == undefined)
+                //    graph = morrisjs_demo(results.sprints)
+                //else
+                //    graph.setData(results.sprints)
                 console.log("Recomnded points for a group: ", results)
+
+            }, function (e) {
+                console.log("error: ", e)
+            });
+
+
+        //Calculate doneVsNotDone points per group
+        observeOnScope($scope, 'selectedUsers')
+            .combineLatest(usersObservable)
+            .flatMap(data => issueDbController.graphData.doneVsNotDone(data[1]))
+            .subscribe(function (results) {
+                areaDoneVsNotDone.setData(results.sprints)
+                console.log("doneVsNotDone points for a group: ", results)
 
             }, function (e) {
                 console.log("error: ", e)
