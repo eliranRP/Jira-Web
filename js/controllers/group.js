@@ -195,7 +195,7 @@
         //Calculate doneVsNotDone points per group
         observeOnScope($scope, 'selectedUsers')
             .combineLatest(usersObservable)
-            .flatMap(data => issueDbController.graphData.doneVsNotDone(data[1]))
+            .flatMap(data => issueDbController.graphData.commitmentVsCompleted(data[1]))
             .subscribe(function (results) {
                 areaDoneVsNotDone.setData(results.sprints)
                 console.log("doneVsNotDone points for a group: ", results)

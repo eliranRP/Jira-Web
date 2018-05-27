@@ -37,8 +37,6 @@
                         }
                         return array;
                     }
-
-
                 }
             },
             checkIf: {
@@ -178,7 +176,7 @@
                             }
                         })
                 },
-                doneVsNotDone: function (keySelector, observableData) {
+                commitmentVsCompleted: function (keySelector, observableData) {
                     return observableData
                         .filter(issue => Object.byString(issue, keySelector) != undefined)
                         .reduce((data, issue) => {
@@ -240,11 +238,11 @@
                 return serviceObject.agrregation.average(keySelector, observableData)
             },
             graphData: {
-                doneVsNotDone: function (group) {
+                commitmentVsCompleted: function (group) {
                     var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                     var promises = serviceObject.groupBy.user(group);
                     observableData = serviceObject.getListByUsers(promises)
-                    return serviceObject.agrregation.doneVsNotDone(keySelector, observableData)
+                    return serviceObject.agrregation.commitmentVsCompleted(keySelector, observableData)
                 }
             },
             loadSprintJson: function (path) {
