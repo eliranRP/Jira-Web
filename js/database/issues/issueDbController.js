@@ -95,45 +95,13 @@
                 }
             },
             //Return all issues by users id's
-            getListByGroup: function (promises) {
+            getListByUsers: function (promises) {
                 //return observable with all filterd issues
                 return Rx.Observable.fromPromise(Promise.all(promises))
                     .flatMap(querySnapshot => Rx.Observable.from(querySnapshot))
-                    .map(issue => {
-                        console.log('issues: ', issue)
-                        return issue
-                    })
                     .map(issue => issue.docs)
                     .flatMap(issues => Rx.Observable.from(issues))
                     .map(issue => issue.data())
-
-            },
-            getListGroupBy(promises) {
-                //return observable with all filterd issues
-                return Rx.Observable.fromPromise(Promise.all(promises))
-                    .flatMap(querySnapshot => Rx.Observable.from(querySnapshot))
-                    .map(issue => {
-                        console.log('issues: ', issue)
-                        return issue
-                    })
-                    .map(issue => issue.docs)
-                    .flatMap(issues => Rx.Observable.from(issues)
-                        .map(issue => issue.data())
-                        .groupBy(data => {
-                            return data.sprintId
-                        })
-                        .toArray())
-                    .map(groupBy => {
-                        console.log(" before groupBy: ", groupBy)
-                        return groupBy;
-                    })
-                    .groupBy(data => {
-                        return data.sprintId
-                    })
-                    .map(groupBy => {
-                        console.log(" after groupBy: ", groupBy)
-                        return groupBy;
-                    })
 
             },
             agrregation: {
@@ -155,9 +123,32 @@
                         .reduce((data, issue) => {
                             return {
                                 count: data.count += 1,
+                                sum: data.sum += Object.byString(issue, keySelector)
+                            }
+                        }, { count: 0, sum: 0 })
+                        //Calculate the average
+                        .map(data => {
+                            return {
+                                sum: data.sum,
+                                count: Object.keys(data.sprints).length,
+                                average: data.sum / Object.keys(data.sprints).length
+                            }
+                        })
+                },
+                groupBy: function (keySelector, observableData) {
+                    return observableData
+                        .filter(issue => Object.byString(issue, keySelector) != undefined)
+                        .reduce((data, issue) => {
+                            return {
+                                count: data.count += 1,
                                 sum: data.sum += Object.byString(issue, keySelector),
                                 sprints: function () {
-                                    data.sprints["'" + issue.sprintId + "'"] = issue
+                                    if (data.sprints["'" + issue.sprintId + "'"] == undefined) {
+                                        data.sprints["'" + issue.sprintId + "'"] = {};
+                                        data.sprints["'" + issue.sprintId + "'"].points = 0;
+                                    }
+                                    data.sprints["'" + issue.sprintId + "'"].points += Object.byString(issue, keySelector)
+                                    data.sprints["'" + issue.sprintId + "'"].name = "name" + issue.sprintId;//Add the sprint name in issue object
                                     return data.sprints
                                 }()
                             }
@@ -167,10 +158,16 @@
                             return {
                                 sum: data.sum,
                                 count: Object.keys(data.sprints).length,
-                                average: data.sum / Object.keys(data.sprints).length
+                                average: data.sum / Object.keys(data.sprints).length,
+                                sprints: function () {
+                                    var graphData = []
+                                    for (var key in data.sprints) {
+                                        graphData.push(data.sprints[key]);
+                                    }
+                                    return graphData;
+                                }()
                             }
                         })
-                }
             },
             doneIssues: function (data, issue, keySelector) {
                 if (issue.fields.status.name == "Done") {
@@ -183,7 +180,7 @@
                 var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                 if (observableData == null || observableData == undefined) {
                     var promises = serviceObject.groupQuery.bySprint(group, currentSprintId);
-                    observableData = serviceObject.getListByGroup(promises)
+                    observableData = serviceObject.getListByUsers(promises)
 
                 }
 
@@ -194,9 +191,7 @@
                 var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                 if (observableData == null || observableData == undefined) {
                     var promises = serviceObject.groupQuery.byStatus(group, issuesConstant.STATUS.DONE);
-                    observableData = serviceObject.getListByGroup(promises)
-                    //.groupBy(data => data.sprintId)
-
+                    observableData = serviceObject.getListByUsers(promises)
                 }
 
                 return serviceObject.agrregation.average(keySelector, observableData)

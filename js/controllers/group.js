@@ -23,6 +23,36 @@
 
 
 
+
+
+        function morrisjs_demo(dataGraph) {
+            if ($('#morris_area_chart1').length) {
+                var data = dataGraph,
+                    config = {
+                        data: data,
+                        xkey: 'name',
+                        ykeys: ['points'],
+                        labels: ['Total points'],
+                        fillOpacity: 0.6,
+                        hideHover: 'auto',
+                        behaveLikeLine: true,
+                        resize: true,
+                        parseTime: false,
+                        pointFillColors: ['#ffffff'],
+                        pointStrokeColors: ['black'],
+                        lineColors: [MaterialLab.APP_COLORS.mw_purple, MaterialLab.APP_COLORS.success],
+                        barColors: [MaterialLab.APP_COLORS.mw_purple, MaterialLab.APP_COLORS.success]
+                    };
+                config.element = 'morris_area_chart1';
+                return Morris.Area(config)
+
+            }
+        };
+        // morrisjs_demo();
+
+
+
+
         //Load sprints
         sprintDbController.getList()
             .safeApply($scope, function (result) {
@@ -154,7 +184,7 @@
             });
 
 
-
+        var graph;
         //Calculate recomended points per group
         observeOnScope($scope, 'selectedUsers')
             .combineLatest(usersObservable)
@@ -163,7 +193,11 @@
                 $scope.recomendedPoints = result.average
             })
             .subscribe(function (results) {
-
+              
+                if (graph == undefined)
+                    graph = morrisjs_demo(results.sprints)
+                else
+                    graph.setData(results.sprints)
                 console.log("Recomnded points for a group: ", results)
 
             }, function (e) {
