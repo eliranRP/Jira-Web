@@ -18,11 +18,10 @@
                 return Rx.Observable.fromPromise(storageService.fileUpload(file, storeRef, fileName))
                     .flatMap(url => serviceObject.loadJson(url))
             },
-
             createProgressBar: function (placeHolderId, color) {
                 if ($(placeHolderId).length) {
                     var progressbar = new ProgressBar.Circle(placeHolderId, {
-                        color: '#fb4869',
+                        color: color,
                         strokeWidth: 3,
                         trailWidth: 3,
                         duration: 1500,
@@ -36,6 +35,21 @@
                     return progressbar
 
                 }
+            },
+            refresh: function cardRefresh() {
+                $(document).on("click", card.cardRefresh, function (e) {
+                    e.preventDefault();
+                    var $card = $(this).closest(card.cardClass);
+                    $card.append("<div class=\"load\"></div>");
+                    var $loader = $card.find('.load');
+                    $loader.load('assets/partials/_preloader.html', function () {
+                        setTimeout(function () {
+                            $loader.fadeOut('1500', function () {
+                                $loader.remove();
+                            });
+                        }, 1700);
+                    });
+                });
             }
 
         }

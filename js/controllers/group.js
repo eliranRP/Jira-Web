@@ -1,5 +1,7 @@
-﻿MainApp.controller('AppCtrl', ['$scope', 'rx', 'observeOnScope', 'utils', 'sprintDbController', 'issueDbController', 'userDbController',
-    function ($scope, rx, observeOnScope, utils, sprintDbController, issueDbController, userDbController) {
+﻿MainApp.controller('AppCtrl', ['$scope', 'rx', 'observeOnScope', 'utils', 'sprintDbController', 'issueDbController',
+    'userDbController','graphService',
+    function ($scope, rx, observeOnScope, utils, sprintDbController, issueDbController,
+        userDbController, graphService) {
         //Select sprint
         $scope.selectedSprint = {
             name: 'Select sprint', id: '-1'
@@ -14,6 +16,16 @@
         var previousPointsAccomplish = utils.createProgressBar("#previousPointsAccomplish", "#42a5f5");// progressbar.animate(value);
 
 
+        //Graphs
+        var areaDoneVsNotDone = graphService.Area.create('morris_area_chart1',
+            null,
+            'name',
+            ['donePoints', 'notDonePoints'],
+            ['Done', 'Not done'])
+
+
+
+
         //issueDbController.uploadSprint("../../../sprint_test.json", "421")
         //    .subscribe(function (results) {
         //        console.log("results: ", results)
@@ -24,31 +36,6 @@
 
 
 
-
-        function morrisjs_demo(dataGraph) {
-            if ($('#morris_area_chart1').length) {
-                var data = dataGraph,
-                    config = {
-                        data: data,
-                        xkey: 'name',
-                        ykeys: ['points'],
-                        labels: ['Total points'],
-                        fillOpacity: 0.6,
-                        hideHover: 'auto',
-                        behaveLikeLine: true,
-                        resize: true,
-                        parseTime: false,
-                        pointFillColors: ['#ffffff'],
-                        pointStrokeColors: ['black'],
-                        lineColors: [MaterialLab.APP_COLORS.mw_purple, MaterialLab.APP_COLORS.success],
-                        barColors: [MaterialLab.APP_COLORS.mw_purple, MaterialLab.APP_COLORS.success]
-                    };
-                config.element = 'morris_area_chart1';
-                return Morris.Area(config)
-
-            }
-        };
-        // morrisjs_demo();
 
 
 
@@ -194,11 +181,24 @@
             })
             .subscribe(function (results) {
               
-                if (graph == undefined)
-                    graph = morrisjs_demo(results.sprints)
-                else
-                    graph.setData(results.sprints)
+                //if (graph == undefined)
+                //    graph = morrisjs_demo(results.sprints)
+                //else
+                //    graph.setData(results.sprints)
                 console.log("Recomnded points for a group: ", results)
+
+            }, function (e) {
+                console.log("error: ", e)
+            });
+
+
+        //Calculate doneVsNotDone points per group
+        observeOnScope($scope, 'selectedUsers')
+            .combineLatest(usersObservable)
+            .flatMap(data => issueDbController.graphData.doneVsNotDone(data[1]))
+            .subscribe(function (results) {
+                areaDoneVsNotDone.setData(results.sprints)
+                console.log("doneVsNotDone points for a group: ", results)
 
             }, function (e) {
                 console.log("error: ", e)

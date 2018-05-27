@@ -18,6 +18,38 @@
             return o;
         }
         var serviceObject = {
+            objects: {
+                sprintArray: {
+                    create: function ( key) {
+                        return {
+                            donePoints: 0,
+                            notDonePoints: 0,
+                            name: 'name' + key
+                        }
+                    },
+                    addPoint: function (issue, array, keySelector) {
+                        var isDone = serviceObject.checkIf.isDone(issue)
+
+                        if (isDone) {
+                            array[issue.sprintId].donePoints += Object.byString(issue, keySelector)
+                        } else {
+                            array[issue.sprintId].notDonePoints += Object.byString(issue, keySelector)
+                        }
+                        return array;
+                    }
+
+
+                }
+            },
+            checkIf: {
+                isDone: function (issue) {
+                    if (Object.byString(issue, issuesConstant.STATUS_NAME) == issuesConstant.STATUS.DONE) {
+                        return true
+                    }
+
+                    return false;
+                }
+            },
             docRef: function (ref) {
                 return collectionRef.doc(ref);
             },
@@ -37,8 +69,8 @@
                     .flatMap(prmise => Rx.Observable.fromPromise(prmise))
 
             },
-            groupQuery: {
-                bySprint: function (group, currentSprintId) {
+            groupBy: {
+                sprint: function (group, currentSprintId) {
 
                     var promises = [];
 
@@ -52,7 +84,7 @@
 
                     return promises;
                 },
-                byProject: function (group, projectNames) {
+                project: function (group, projectNames) {
 
                     var promises = [];
 
@@ -66,7 +98,7 @@
 
                     return promises;
                 },
-                byStatus: function (group, status) {
+                status: function (group, status) {
 
                     var promises = [];
 
@@ -80,7 +112,7 @@
 
                     return promises;
                 },
-                byUser: function (group, projectNames) {
+                user: function (group, projectNames) {
 
                     var promises = [];
 
@@ -104,6 +136,7 @@
                     .map(issue => issue.data())
 
             },
+
             agrregation: {
                 sum: function (keySelector, observableData) {
                     return observableData
@@ -123,9 +156,19 @@
                         .reduce((data, issue) => {
                             return {
                                 count: data.count += 1,
-                                sum: data.sum += Object.byString(issue, keySelector)
+                                sum: data.sum += Object.byString(issue, keySelector),
+                                sprints: function () {
+
+                                    var key = issue.sprintId;
+
+                                    if (data.sprints[key] == undefined) {
+                                        data.sprints[key] = serviceObject.objects.sprintArray.create(key)
+                                    }
+
+                                    return data.sprints
+                                }()
                             }
-                        }, { count: 0, sum: 0 })
+                        }, { count: 0, sum: 0, sprints: [] })
                         //Calculate the average
                         .map(data => {
                             return {
@@ -135,7 +178,7 @@
                             }
                         })
                 },
-                groupBy: function (keySelector, observableData) {
+                doneVsNotDone: function (keySelector, observableData) {
                     return observableData
                         .filter(issue => Object.byString(issue, keySelector) != undefined)
                         .reduce((data, issue) => {
@@ -143,16 +186,15 @@
                                 count: data.count += 1,
                                 sum: data.sum += Object.byString(issue, keySelector),
                                 sprints: function () {
-                                    if (data.sprints["'" + issue.sprintId + "'"] == undefined) {
-                                        data.sprints["'" + issue.sprintId + "'"] = {};
-                                        data.sprints["'" + issue.sprintId + "'"].points = 0;
+                                    if (data.sprints[issue.sprintId] == undefined) {
+                                        data.sprints[issue.sprintId] = serviceObject.objects.sprintArray.create(issue.sprintId)
                                     }
-                                    data.sprints["'" + issue.sprintId + "'"].points += Object.byString(issue, keySelector)
-                                    data.sprints["'" + issue.sprintId + "'"].name = "name" + issue.sprintId;//Add the sprint name in issue object
+                                    data.sprints = serviceObject.objects.sprintArray.addPoint(issue, data.sprints, keySelector)
+
                                     return data.sprints
                                 }()
                             }
-                        }, { count: 0, sum: 0, sprints: [] })
+                        }, { count: 0, sum: 0, sprints: {} })
                         //Calculate the average
                         .map(data => {
                             return {
@@ -168,6 +210,7 @@
                                 }()
                             }
                         })
+                },
             },
             doneIssues: function (data, issue, keySelector) {
                 if (issue.fields.status.name == "Done") {
@@ -179,7 +222,7 @@
 
                 var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                 if (observableData == null || observableData == undefined) {
-                    var promises = serviceObject.groupQuery.bySprint(group, currentSprintId);
+                    var promises = serviceObject.groupBy.sprint(group, currentSprintId);
                     observableData = serviceObject.getListByUsers(promises)
 
                 }
@@ -190,11 +233,19 @@
 
                 var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                 if (observableData == null || observableData == undefined) {
-                    var promises = serviceObject.groupQuery.byStatus(group, issuesConstant.STATUS.DONE);
+                    var promises = serviceObject.groupBy.status(group, issuesConstant.STATUS.DONE);
                     observableData = serviceObject.getListByUsers(promises)
                 }
 
                 return serviceObject.agrregation.average(keySelector, observableData)
+            },
+            graphData: {
+                doneVsNotDone: function (group) {
+                    var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
+                    var promises = serviceObject.groupBy.user(group);
+                    observableData = serviceObject.getListByUsers(promises)
+                    return serviceObject.agrregation.doneVsNotDone(keySelector, observableData)
+                }
             },
             loadSprintJson: function (path) {
                 return utils.loadJson(path)
