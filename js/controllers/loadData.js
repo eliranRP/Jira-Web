@@ -4,13 +4,24 @@
         userDbController, graphService) {
 
 
+        //Load issues
+
+        //issueDbController.uploadSprint("../../../sprint_18_425.json", "425","Sprint 18")
+        //   .subscribe(function (results) {
+        //       console.log("results: ", results)
+        //   }, function (e) {
+        //       console.log("error: ", e)
+        //   });
 
 
-        issueDbController.uploadSprint("../../../sprint_12_399.json", "399")
-           .subscribe(function (results) {
-               console.log("results: ", results)
-           }, function (e) {
-               console.log("error: ", e)
-           });
+
+        //Load sprints
+
+        //sprintDbController.uploadList("../../../sprint_list.json")
+        //   .subscribe(function (results) {
+        //       console.log("results: ", results)
+        //   }, function (e) {
+        //       console.log("error: ", e)
+        //   });
 
     }]);

@@ -20,11 +20,12 @@
         var serviceObject = {
             objects: {
                 sprintArray: {
-                    create: function ( key) {
+                    create: function (key, sprintName) {
                         return {
                             donePoints: 0,
                             notDonePoints: 0,
-                            name: 'name' + key
+                            name: sprintName,
+                            id:key
                         }
                     },
                     addPoint: function (issue, array, keySelector) {
@@ -54,12 +55,15 @@
             add: function (item) {
                 return collectionRef.doc(item.id + "_" + item.sprintId).set(item)
             },
-            uploadSprint: function (path, sprintId) {
+            uploadSprint: function (path, sprintId,sprintName) {
                 return Rx.Observable
                     //.fromPromise(utils.uploadFile(file, fileName))
                     .fromPromise(utils.loadJson(path))
                     .map(items => {
-                        items.issues.forEach(issue => issue.sprintId = sprintId)
+                        items.issues.forEach(issue => {
+                            issue.sprintId = sprintId
+                            issue.sprintName = sprintName
+                        })
                         return items.issues
                     })
                     .flatMap(items => Rx.Observable.from(items))
@@ -185,7 +189,7 @@
                                 sum: data.sum += Object.byString(issue, keySelector),
                                 sprints: function () {
                                     if (data.sprints[issue.sprintId] == undefined) {
-                                        data.sprints[issue.sprintId] = serviceObject.objects.sprintArray.create(issue.sprintId)
+                                        data.sprints[issue.sprintId] = serviceObject.objects.sprintArray.create(issue.sprintId, issue.sprintName)
                                     }
                                     data.sprints = serviceObject.objects.sprintArray.addPoint(issue, data.sprints, keySelector)
 

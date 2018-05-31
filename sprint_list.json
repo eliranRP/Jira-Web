@@ -1,217 +1,8 @@
 ﻿{
   "maxResults": 50,
-  "startAt": 105,
+  "startAt": 124,
   "isLast": true,
   "values": [
-    {
-      "id": 354,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/354",
-      "state": "closed",
-      "name": "Bravo Sprint - 1",
-      "startDate": "2017-11-22T09:58:30.311Z",
-      "endDate": "2017-11-30T09:58:00.000Z",
-      "completeDate": "2017-11-30T16:35:40.330Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 356,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/356",
-      "state": "closed",
-      "name": "Alpha Sprint 1#",
-      "startDate": "2017-11-23T07:51:12.903Z",
-      "endDate": "2017-11-29T07:51:00.000Z",
-      "completeDate": "2017-11-30T17:42:15.388Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
-    {
-      "id": 363,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/363",
-      "state": "closed",
-      "name": "Alpha sprint - number 2",
-      "startDate": "2017-12-03T18:00:39.726Z",
-      "endDate": "2017-12-14T18:00:00.000Z",
-      "completeDate": "2017-12-17T10:22:04.246Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
-    {
-      "id": 361,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/361",
-      "state": "closed",
-      "name": "Bravo Sprint - 2",
-      "startDate": "2017-12-03T19:15:21.317Z",
-      "endDate": "2017-12-14T19:15:00.000Z",
-      "completeDate": "2017-12-14T18:54:41.981Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 367,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/367",
-      "state": "closed",
-      "name": "Bravo Sprint - 3",
-      "startDate": "2017-12-17T10:46:42.633Z",
-      "endDate": "2017-12-31T10:46:00.000Z",
-      "completeDate": "2017-12-28T16:30:17.729Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 371,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/371",
-      "state": "closed",
-      "name": "Bravo Sprint - 4",
-      "startDate": "2017-12-31T17:41:35.577Z",
-      "endDate": "2018-01-11T17:41:00.000Z",
-      "completeDate": "2018-01-14T08:59:42.240Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 373,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/373",
-      "state": "closed",
-      "name": "Alpha Sprint #5",
-      "startDate": "2018-01-14T10:39:59.394Z",
-      "endDate": "2018-01-25T10:39:00.000Z",
-      "completeDate": "2018-01-28T08:54:45.476Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
-    {
-      "id": 374,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/374",
-      "state": "closed",
-      "name": "Bravo Sprint - 5",
-      "startDate": "2018-01-14T21:38:12.638Z",
-      "endDate": "2018-01-27T21:38:00.000Z",
-      "completeDate": "2018-01-28T21:17:49.576Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 376,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/376",
-      "state": "closed",
-      "name": "Bravo Sprint - 6",
-      "startDate": "2018-01-27T22:21:48.193Z",
-      "endDate": "2018-02-09T22:21:00.000Z",
-      "completeDate": "2018-03-08T06:31:58.779Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 378,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/378",
-      "state": "closed",
-      "name": "Bravo Sprint - 7",
-      "startDate": "2018-02-25T07:57:33.605Z",
-      "endDate": "2018-03-10T07:57:00.000Z",
-      "completeDate": "2018-03-10T22:13:22.102Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 381,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/381",
-      "state": "closed",
-      "name": "Alpha Sprint #8",
-      "startDate": "2018-03-08T15:27:07.318Z",
-      "endDate": "2018-03-15T15:27:00.000Z",
-      "completeDate": "2018-03-18T07:42:34.264Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
-    {
-      "id": 385,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/385",
-      "state": "closed",
-      "name": "Bravo sprint 8",
-      "startDate": "2018-03-11T17:18:24.243Z",
-      "endDate": "2018-03-18T17:18:00.000Z",
-      "completeDate": "2018-03-18T09:32:48.713Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 387,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/387",
-      "state": "closed",
-      "name": "Alpha Sprint #9",
-      "startDate": "2018-03-18T07:43:19.053Z",
-      "endDate": "2018-03-25T07:43:00.000Z",
-      "completeDate": "2018-03-25T13:26:57.054Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
-    {
-      "id": 390,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/390",
-      "state": "closed",
-      "name": "Bravo sprint 9",
-      "startDate": "2018-03-19T21:30:00.000Z",
-      "endDate": "2018-03-21T21:30:00.000Z",
-      "completeDate": "2018-04-01T18:11:59.155Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 391,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/391",
-      "state": "closed",
-      "name": "Alpha Sprint #10",
-      "startDate": "2018-03-25T13:27:04.454Z",
-      "endDate": "2018-04-01T13:27:00.000Z",
-      "completeDate": "2018-04-01T10:07:31.284Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
-    {
-      "id": 393,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/393",
-      "state": "closed",
-      "name": "Alpha Sprint #11",
-      "startDate": "2018-04-01T10:09:08.086Z",
-      "endDate": "2018-04-08T10:09:00.000Z",
-      "completeDate": "2018-04-08T07:42:36.678Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
-    {
-      "id": 394,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/394",
-      "state": "closed",
-      "name": "Bravo sprint 10",
-      "startDate": "2018-04-02T10:57:11.815Z",
-      "endDate": "2018-04-07T10:57:00.000Z",
-      "completeDate": "2018-04-08T06:15:28.762Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 396,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/396",
-      "state": "closed",
-      "name": "Bravo sprint 11",
-      "startDate": "2018-04-08T19:47:54.603Z",
-      "endDate": "2018-04-14T19:47:00.000Z",
-      "completeDate": "2018-04-15T07:36:38.462Z",
-      "originBoardId": 202,
-      "goal": ""
-    },
-    {
-      "id": 397,
-      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/397",
-      "state": "closed",
-      "name": "Alpha Sprint #12",
-      "startDate": "2018-04-08T07:43:39.401Z",
-      "endDate": "2018-04-15T07:43:00.000Z",
-      "completeDate": "2018-04-15T17:04:40.474Z",
-      "originBoardId": 200,
-      "goal": ""
-    },
     {
       "id": 399,
       "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/399",
@@ -270,18 +61,40 @@
     {
       "id": 417,
       "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/417",
-      "state": "active",
+      "state": "closed",
       "name": "Bravo sprint 16",
       "startDate": "2018-05-13T14:25:47.977Z",
       "endDate": "2018-05-19T14:25:00.000Z",
+      "completeDate": "2018-05-19T20:47:54.901Z",
       "originBoardId": 202,
       "goal": ""
     },
     {
       "id": 421,
       "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/421",
-      "state": "future",
+      "state": "closed",
       "name": "Bravo sprint 17",
+      "startDate": "2018-05-21T19:22:27.254Z",
+      "endDate": "2018-05-27T19:22:00.000Z",
+      "completeDate": "2018-05-27T15:26:01.898Z",
+      "originBoardId": 202,
+      "goal": ""
+    },
+    {
+      "id": 425,
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/425",
+      "state": "active",
+      "name": "Bravo sprint 18",
+      "startDate": "2018-05-27T16:32:59.877Z",
+      "endDate": "2018-06-03T16:32:00.000Z",
+      "originBoardId": 202,
+      "goal": ""
+    },
+    {
+      "id": 431,
+      "self": "https://moveogroup.atlassian.net/rest/agile/1.0/sprint/431",
+      "state": "future",
+      "name": "Bravo sprint 19",
       "originBoardId": 202
     }
   ]
