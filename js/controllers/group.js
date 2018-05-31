@@ -23,23 +23,6 @@
             ['donePoints', 'notDonePoints'],
             ['Done', 'Not done'])
 
-
-
-
-        //issueDbController.uploadSprint("../../../sprint_test.json", "421")
-        //    .subscribe(function (results) {
-        //        console.log("results: ", results)
-        //    }, function (e) {
-        //        console.log("error: ", e)
-        //    });
-
-
-
-
-
-
-
-
         //Load sprints
         sprintDbController.getList()
             .safeApply($scope, function (result) {
