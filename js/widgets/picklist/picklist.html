@@ -1,0 +1,21 @@
+﻿<div class="btn-group">
+    <button type="button" class="btn btn-primary  btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       {{title}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li class="list-group-item" ng-repeat="item in items  track by $index">
+            <div class="row-content">
+                <div class="least-content">
+                    <span class="checkbox">
+                        <label>
+                            <!--ng-change="click(item)" data-ng-model="item.isSelected"-->
+                            <input  type="checkbox">
+                        </label>
+                        <span class="list-group-item-text">{{item.displayName}}</span>
+                    </span>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

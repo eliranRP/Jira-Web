@@ -52,17 +52,9 @@
                             <!--<h2 class="card-title">Flat Button Dropdowns</h2>-->
                         </header>
                         <div class="card-body">
-                            <!--<p>Turn a flat button into a dropdown toggle with some basic markup changes.</p>-->
-                            <div id="sprint-list" class="btn-group">
-                                <button type="button" class="btn btn-primary  btn-flat dropdown-toggle"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span ng-model="selectedSprint">{{selectedSprint.name}}</span>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li ng-repeat="item in sprints  track by $index" ng-click="sprintClick(sprints[$index],sprints[$index+1])"><a href="#">{{item.name}}</a></li>
-                                </ul>
-                            </div>
+                            <jwbdropdown info="sprints"
+                                         value="selectedSprint.name"
+                                         on-select=selected(current,previous)></jwbdropdown>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary  btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Choose users <span class="caret"></span>
@@ -195,7 +187,7 @@
             </div>
 
             <div class="row" style="margin-top:100px;">
-                <div hidden class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-6">
                     <div class="card p-b-10">
                         <header class="card-heading ">
                             <h2 class="card-title">Drill down current sprint</h2>
@@ -251,7 +243,7 @@
                         <canvas id="conversionStats" width="1200" height="400"></canvas>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12">
+                <div class="col-xs-12 col-sm-6">
                     <div class="card">
                         <header class="card-heading">
                             <h2 class="card-title">Commitment vs. Completed</h2>
@@ -285,7 +277,7 @@
                     </div>
                 </div>
             </div>
-            <div hidden class="row">
+            <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="card">
                         <header class="card-heading ">
@@ -400,6 +392,10 @@
     <script src="../js/Utils/utils.js"></script>
     <script src="../js/services/storageService.js"></script>
 
+    <!--project-->
+    <script src="../js/database/projects/projectDbController.js"></script>
+    <script src="../js/database/projects/projectsConstants.js"></script>
+
     <!--sprint-->
     <script src="../js/database/sprints/sprintsConstants.js"></script>
     <script src="../js/database/sprints/sprintDbController.js"></script>
@@ -420,7 +416,8 @@
     <script src="../js/controllers/group.js"></script>
 
 
-
+    <!--directives-->
+    <script src="../js/widgets/dropdown/dropdwon.js"></script>
 
 
     <script src="../assets/js/vendor.bundle.js"></script>

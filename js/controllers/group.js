@@ -1,7 +1,7 @@
 ﻿MainApp.controller('AppCtrl', ['$scope', 'rx', 'observeOnScope', 'utils', 'sprintDbController', 'issueDbController',
-    'userDbController','graphService',
+    'userDbController', 'graphService','projectDbController',
     function ($scope, rx, observeOnScope, utils, sprintDbController, issueDbController,
-        userDbController, graphService) {
+        userDbController, graphService, projectDbController) {
         //Select sprint
         $scope.selectedSprint = {
             name: 'Select sprint', id: '-1'
@@ -32,7 +32,7 @@
 
             })
             .subscribe(function (results) {
-                console.log("results: ", results)
+                console.log("sprints: ", results)
             }, function (e) {
                 console.log("error: ", e)
             });
@@ -43,12 +43,21 @@
             .digest($scope, 'users')
             .subscribe(function (results) {
                 $scope.users = results
-                console.log("results: ", results)
+                console.log("users: ", results)
             },
             function (e) {
                 console.log("error: ", e)
             });
 
+        //Load projects
+        projectDbController.getList()
+            //.digest($scope, 'users')
+            .subscribe(function (results) {
+                console.log("projects: ", results)
+            },
+            function (e) {
+                console.log("error: ", e)
+            });
 
 
         function contain(array, item) {
@@ -85,7 +94,7 @@
         }
 
         //Observe chosen sprint
-        $scope.$createObservableFunction('sprintClick')
+        $scope.$createObservableFunction('selected')
             .distinctUntilChanged()
             .safeApply($scope, function (result) {
                 $scope.selectedSprint = result[0]
@@ -163,11 +172,7 @@
                 $scope.recomendedPoints = result.average
             })
             .subscribe(function (results) {
-              
-                //if (graph == undefined)
-                //    graph = morrisjs_demo(results.sprints)
-                //else
-                //    graph.setData(results.sprints)
+
                 console.log("Recomnded points for a group: ", results)
 
             }, function (e) {

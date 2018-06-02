@@ -176,7 +176,8 @@
                             return {
                                 sum: data.sum,
                                 count: Object.keys(data.sprints).length,
-                                average: data.sum / Object.keys(data.sprints).length
+                                average: data.sum / Object.keys(data.sprints).length,
+                                sprints: data.sprints
                             }
                         })
                 },
@@ -245,6 +246,8 @@
                 commitmentVsCompleted: function (group) {
                     var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                     var promises = serviceObject.groupBy.user(group);
+
+
                     observableData = serviceObject.getListByUsers(promises)
                     return serviceObject.agrregation.commitmentVsCompleted(keySelector, observableData)
                 }
