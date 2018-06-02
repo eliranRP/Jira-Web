@@ -1,4 +1,4 @@
-﻿<div id="sprint-list" class="btn-group">
+﻿<div ng-attr-id="{{identifier}}" class="btn-group">
     <button type="button" class="btn btn-primary  btn-flat dropdown-toggle"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span>{{value}}</span>
@@ -6,8 +6,8 @@
     </button>
     <ul class="dropdown-menu">
         <li ng-repeat="item in items  track by $index"
-            ng-click="select({current:items[$index],previous:items[$index+1]})">
-            <a href="#">{{item.name}}</a>
+            ng-click="select({current:items[$index],previous:items[$index+1]});close()">
+            <a href="">{{item.name}}</a>
         </li>
     </ul>
 </div>

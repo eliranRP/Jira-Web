@@ -51,7 +51,7 @@
 
         //Load projects
         projectDbController.getList()
-            //.digest($scope, 'users')
+            .digest($scope, 'projects')
             .subscribe(function (results) {
                 console.log("projects: ", results)
             },
@@ -68,9 +68,20 @@
                 $scope.prevSprint = result[1]
             })
             .subscribe(function (results) {
-                $("#sprint-list").removeClass("open");
+                //$("#sprint-list").removeClass("open");
             });
 
+
+        //Observe chosen project
+        $scope.$createObservableFunction('onProjectSelected')
+            .distinctUntilChanged()
+            .safeApply($scope, function (result) {
+                $scope.selectedProject = result[0]
+                $scope.prevProject = result[1]
+            })
+            .subscribe(function (results) {
+               // $("#sprint-list").removeClass("open");
+            });
 
         //Observe chosen users
         var usersObservable = $scope.$createObservableFunction('onUserSelected')

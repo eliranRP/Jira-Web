@@ -53,6 +53,7 @@
                         </header>
                         <div class="card-body">
                             <jwbdropdown info="sprints"
+                                         identifier="'sprint'"
                                          value="selectedSprint.name"
                                          on-select=selected(current,previous)>
 
@@ -169,34 +170,12 @@
                     <div class="card p-b-10">
                         <header class="card-heading ">
                             <h2 class="card-title">Drill down current sprint</h2>
-                            <ul class="card-actions icons right-top">
-                                <li>
-                                    <a href="javascript:void(0)" data-toggle-expand="content-expanded" data-key="contentExpand">
-                                        <i class="zmdi zmdi-fullscreen"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-toggle="refresh">
-                                        <i class="zmdi zmdi-refresh-alt"></i>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0)" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-                                    <ul class="dropdown-menu btn-primary dropdown-menu-right">
-                                        <li>
-                                            <a href="javascript:void(0)">Today</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 7 Days</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Last 30 Days</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <jwbdropdown info="projects"
+                                         identifier="'project'"
+                                         value="selectedProject.name"
+                                         on-select=onProjectSelected(current,previous)>
+
+                            </jwbdropdown>
                         </header>
                         <div class="card-body">
                             <ul class="summary">
