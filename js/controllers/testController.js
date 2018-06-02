@@ -16,6 +16,33 @@
                 console.log("error: ", e)
             });
 
+        //$scope.selectedUsers = function (message) {
+        //    $scope.current = message;
+        //    console.log("message: ", message)
+
+        //}
+
+
+        //Observe chosen users
+        var usersObservable = $scope.$createObservableFunction('selectedU')
+            .map(message => {
+                console.log("messgaeC:", message)
+                return message;
+            })
+            .debounce(800)
+            .flatMap(message => Rx.Observable.from(message)
+                .map(user => {
+                    return { id: user.id, name: user.displayName }
+                })
+                .toArray()
+            ).subscribe(function (results) {
+                console.log("results from combineLatest: ", results)
+
+
+
+            }, function (e) {
+                console.log("error: ", e)
+            });
 
         ////Load sprints
         //sprintDbController.getList()
@@ -29,11 +56,11 @@
         //    });
 
 
-        ////$scope.selected = function (current, previous) {
-        ////    $scope.current = current;
-        ////    console.log("message: ", current, previous)
+        //////$scope.selected = function (current, previous) {
+        //////    $scope.current = current;
+        //////    console.log("message: ", current, previous)
 
-        ////}
+        //////}
 
 
         ////Observe chosen sprint

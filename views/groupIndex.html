@@ -54,35 +54,13 @@
                         <div class="card-body">
                             <jwbdropdown info="sprints"
                                          value="selectedSprint.name"
-                                         on-select=selected(current,previous)></jwbdropdown>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary  btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Choose users <span class="caret"></span>
-                                </button>
+                                         on-select=selected(current,previous)>
 
-                                <ul class="dropdown-menu">
-                                    <li class="list-group-item" ng-repeat="item in users  track by $index">
-                                        <!--<div class="row-action-primary">
-                                            <i class="zmdi zmdi-folder circle mw-blue"></i>
-                                        </div>-->
-                                        <div class="row-content">
-                                            <div class="least-content">
-                                                <span class="checkbox">
-                                                    <label>
-                                                        <input ng-change="click(item)" data-ng-model="item.isSelected" type="checkbox">
-                                                    </label>
-                                                    <span class="list-group-item-text">{{item.displayName}}</span>
-                                                </span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </div>
-                            <div ng-repeat="selected in selectedUsers" class="chip dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img ng-src="{{selected.avatarUrls['48x48']}}" alt="Contact Person"> {{selected.displayName}}
-                            </div>
+                            </jwbdropdown>
+                            <jwbpicklist info="users"
+                                         title="'select a user'"
+                                         on-select="onUserSelected(items)">
+                            </jwbpicklist>
                         </div>
                     </div>
                 </div>
@@ -418,7 +396,7 @@
 
     <!--directives-->
     <script src="../js/widgets/dropdown/dropdwon.js"></script>
-
+    <script src="../js/widgets/picklist/picklist.js"></script>
 
     <script src="../assets/js/vendor.bundle.js"></script>
     <script src="../assets/js/app.bundle.js"></script>

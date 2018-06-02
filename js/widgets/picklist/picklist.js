@@ -5,6 +5,7 @@
         scope: {
             title: '=',
             items: '=info',
+            'select': '&onSelect'
         },
         controller: ['$scope', function picklistCtrl($scope) {
 
@@ -23,8 +24,8 @@
                 return { isFound: found, position: position }
             }
 
-            //Create selected users array
-            function selectedItems(item) {
+            //Create selected items array
+            $scope.onSelectedItem = function (item) {
                 isContain = contain($scope.selectedItems, item)
                 if (item.isSelected) {
                     if (!isContain.isFound)
@@ -38,17 +39,11 @@
                     }
                 }
             }
+
+            this.getSelected = function () {
+                return $scope.selectedItems;
+            }
         }],
         templateUrl: '/js/widgets/picklist/picklist.html'
     };
-})
-    .directive('jwblistAsChips', function () {
-        return {
-            require: '^^jwbpicklist',
-            restrict: 'E',
-            transclude: true,
-            scope: {
-            },
-            templateUrl: '/js/widgets/picklist/listAsChips.html'
-        };
-    });;
+});

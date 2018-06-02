@@ -1,6 +1,6 @@
 ﻿<div class="btn-group">
     <button type="button" class="btn btn-primary  btn-flat dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       {{title}} <span class="caret"></span>
+        {{title}} <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
         <li class="list-group-item" ng-repeat="item in items  track by $index">
@@ -8,8 +8,8 @@
                 <div class="least-content">
                     <span class="checkbox">
                         <label>
-                            <!--ng-change="click(item)" data-ng-model="item.isSelected"-->
-                            <input  type="checkbox">
+                            <input type="checkbox" ng-click="onSelectedItem(item);select({items:selectedItems})" data-ng-model="item.isSelected">
+                            <span class="checkbox-material"><span class="check"></span></span>
                         </label>
                         <span class="list-group-item-text">{{item.displayName}}</span>
                     </span>
@@ -18,4 +18,7 @@
             </div>
         </li>
     </ul>
+</div>
+<div ng-repeat="selected in selectedItems" class="chip dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <img ng-src="{{selected.avatarUrls['48x48']}}" alt="Contact Person"> {{selected.displayName}}
 </div>

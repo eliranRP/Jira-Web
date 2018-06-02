@@ -1,5 +1,5 @@
 ﻿MainApp.controller('AppCtrl', ['$scope', 'rx', 'observeOnScope', 'utils', 'sprintDbController', 'issueDbController',
-    'userDbController', 'graphService','projectDbController',
+    'userDbController', 'graphService', 'projectDbController',
     function ($scope, rx, observeOnScope, utils, sprintDbController, issueDbController,
         userDbController, graphService, projectDbController) {
         //Select sprint
@@ -60,39 +60,6 @@
             });
 
 
-        function contain(array, item) {
-
-            var found = false;
-            var position = -1;
-            for (var i = 0; i < array.length; i++) {
-                if (array[i].accountId == item.accountId) {
-                    found = true;
-                    position = i;
-                    break;
-                }
-            }
-            return { isFound: found, position: position }
-        }
-
-
-        //Create selected users array
-        function selectUser(user) {
-            isContain = contain($scope.selectedUsers, user)
-            if (user.isSelected) {
-                if (!isContain.isFound)
-                    $scope.selectedUsers.push(user);
-            } else {
-
-                for (var i = 0; i < $scope.selectedUsers.length; i++) {
-                    if ($scope.selectedUsers[i].id == user.id) {
-                        $scope.selectedUsers.splice(i, 1);
-                    }
-                }
-            }
-            return Rx.Observable
-                .just($scope.selectedUsers)
-        }
-
         //Observe chosen sprint
         $scope.$createObservableFunction('selected')
             .distinctUntilChanged()
@@ -106,10 +73,12 @@
 
 
         //Observe chosen users
-        var usersObservable = $scope.$createObservableFunction('click')
-            .flatMapLatest(selectUser)
+        var usersObservable = $scope.$createObservableFunction('onUserSelected')
+            .safeApply($scope, function (result) {
+                $scope.selectedUsers = result[0]
+            })
             .debounce(800)
-            .flatMap(ignor => Rx.Observable.from($scope.selectedUsers)
+            .flatMap(items => Rx.Observable.from(items)
                 .map(user => {
                     return { id: user.id, name: user.displayName }
                 })
