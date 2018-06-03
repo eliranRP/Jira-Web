@@ -2,76 +2,53 @@
     'userDbController', 'graphService', 'projectDbController',
     function ($scope, rx, observeOnScope, utils, sprintDbController, issueDbController,
         userDbController, graphService, projectDbController) {
+        Array.prototype.sum = function () {
+            sum = 0;
+            for (i = 0; i < this.length; i++) {
+                sum += Number(this[i]);
+            }
+            return sum;
+        }
+        Rx.Observable.of(
+            { id: 1, point: 100 },
+            { id: 112, point: 122 },
+            { id: 112, point: 133 },
+            { id: 1, point: 12 },
+            { id: 1, point: 12 },
+            //{ id: 112, name: 'sfqfb2', point: 1 },
+            //{ id: 3, name: 'qfs1', point: 1 },
+            //{ id: 112, name: 'qsgqsfg2', point: 1 }
+        )
+            .groupBy(p => p.id, p => p.point)
+            .flatMap((group$) => group$
+                .reduce((acc, cur) =>
+                    [...acc, cur], ["" + group$.key]
+                ))
+            .map(arr => ({ 'id': parseInt(arr[0]), 'values': arr.slice(1), 'sum': arr.slice(1).sum() }))
+            .subscribe(p => console.log(p));
 
-
-
-        //Load users
-        userDbController.getList()
-            .digest($scope, 'users')
-            .subscribe(function (results) {
-                $scope.users = results
-                console.log("users: ", results)
-            },
-            function (e) {
-                console.log("error: ", e)
-            });
-
-        //$scope.selectedUsers = function (message) {
-        //    $scope.current = message;
-        //    console.log("message: ", message)
-
-        //}
-
-
-        //Observe chosen users
-        var usersObservable = $scope.$createObservableFunction('selectedU')
-            .map(message => {
-                console.log("messgaeC:", message)
-                return message;
-            })
-            .debounce(800)
-            .flatMap(message => Rx.Observable.from(message)
-                .map(user => {
-                    return { id: user.id, name: user.displayName }
-                })
-                .toArray()
-            ).subscribe(function (results) {
-                console.log("results from combineLatest: ", results)
-
-
-
-            }, function (e) {
-                console.log("error: ", e)
-            });
-
-        ////Load sprints
-        //sprintDbController.getList()
-        //    .safeApply($scope, function (result) {
-        //        $scope.sprints = result;
+        //Rx.Observable.of({ id: 1, name: 'aze1', point: 1 },
+        //    { id: 2, name: 'sf2', point: 1 },
+        //    { id: 2, name: 'dg2', point: 1 },
+        //    { id: 1, name: 'erg1', point: 1 },
+        //    { id: 1, name: 'df1', point: 1 },
+        //    { id: 2, name: 'sfqfb2', point: 1 },
+        //    { id: 3, name: 'qfs1', point: 1 },
+        //    { id: 2, name: 'qsgqsfg2', point: 1 }
+        //)
+        //    .groupBy(p => p.id)
+        //    .flatMap((group$) => {
+        //        return group$.reduce((data, issue, t, t2) => {
+        //            return {
+        //                count: data.count += 1,
+        //                sum: data.sum += issue.point,
+        //            }
+        //        }, { count: 0, sum: 0 })
         //    })
-        //    .subscribe(function (results) {
-        //        console.log("sprints: ", results)
-        //    }, function (e) {
-        //        console.log("error: ", e)
-        //    });
-
-
-        //////$scope.selected = function (current, previous) {
-        //////    $scope.current = current;
-        //////    console.log("message: ", current, previous)
-
-        //////}
-
-
-        ////Observe chosen sprint
-        //$scope.$createObservableFunction('selected')
-        //    .distinctUntilChanged()
-        //    .safeApply($scope, function (result) {
-        //        $scope.selectedSprint = result[0]
-        //        $scope.prevSprint = result[1]
+        //    .map(arr => {
+        //        console.log("data: ", arr)
+        //        return arr;
         //    })
-        //    .subscribe(function (results) {
-        //        $("#sprint-list").removeClass("open");
-        //    });
+        //    .subscribe(p => console.log(p));
 
     }]);

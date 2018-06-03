@@ -25,7 +25,7 @@
                             donePoints: 0,
                             notDonePoints: 0,
                             name: sprintName,
-                            id:key
+                            id: key
                         }
                     },
                     addPoint: function (issue, array, keySelector) {
@@ -55,7 +55,7 @@
             add: function (item) {
                 return collectionRef.doc(item.id + "_" + item.sprintId).set(item)
             },
-            uploadSprint: function (path, sprintId,sprintName) {
+            uploadSprint: function (path, sprintId, sprintName) {
                 return Rx.Observable
                     //.fromPromise(utils.uploadFile(file, fileName))
                     .fromPromise(utils.loadJson(path))
@@ -78,7 +78,7 @@
 
                     //Create a query
                     group.forEach((user) => {
-                        promises.push(db.collection("issue")
+                        promises.push(db.collection(ISSUE)
                             .where(issuesConstant.PRIMARY_KEY, "==", user.id)
                             .where(issuesConstant.SPRINT_ID, "==", currentSprintId)
                             .get())
@@ -86,15 +86,15 @@
 
                     return promises;
                 },
-                project: function (group, projectNames) {
+                project: function (group, projectId) {
 
                     var promises = [];
 
                     //Create a query
                     group.forEach((user) => {
-                        promises.push(db.collection("issue")
+                        promises.push(db.collection(ISSUE)
                             .where(issuesConstant.PRIMARY_KEY, "==", user.id)
-                            .where(issuesConstant.PROJECT_NAME, "==", projectName)
+                            .where(issuesConstant.PROJECT_ID, "==", projectName)
                             .get())
                     })
 
@@ -106,7 +106,7 @@
 
                     //Create a query
                     group.forEach((user) => {
-                        promises.push(db.collection("issue")
+                        promises.push(db.collection(ISSUE)
                             .where(issuesConstant.PRIMARY_KEY, "==", user.id)
                             .where(issuesConstant.STATUS_NAME, "==", status)
                             .get())
@@ -120,7 +120,7 @@
 
                     //Create a query
                     group.forEach((user) => {
-                        promises.push(db.collection("issue")
+                        promises.push(db.collection(ISSUE)
                             .where(issuesConstant.PRIMARY_KEY, "==", user.id)
                             .get())
                     })
@@ -214,6 +214,21 @@
                             }
                         })
                 },
+                byIssueType: function (keySelector, observableData) {
+                    return observableData
+                        .filter(item => Object.byString(item, keySelector) != undefined)
+                        .groupBy(item => Object.byString(item, keySelector), p => p.name)
+                        .reduce((data, issue) => {
+                            return {
+                                totalIssues: data.totalIssues += 1,
+                                bugsPoints: serviceObject.doneIssues(data, issue, keySelector),
+                                tasksPoints: data.sumAllPoints += Object.byString(issue, keySelector),
+                                userStoryPoints: data.sumAllPoints += Object.byString(issue, keySelector),
+                                otherPoints: data.sumAllPoints += Object.byString(issue, keySelector),
+                                sprint: issue.sprintId
+                            }
+                        }, { totalIssues: 0, donePoints: 0, sumAllPoints: 0, sprint: '' })
+                }
             },
             doneIssues: function (data, issue, keySelector) {
                 if (issue.fields.status.name == "Done") {

@@ -1,6 +1,12 @@
 ﻿MainApp.factory('utils', ['$rootScope', 'storageService',
     function ($rootScop, storageService) {
-
+        Array.prototype.sum = function () {
+            sum = 0;
+            for (i = 0; i < this.length; i++) {
+                sum += Number(this[i]);
+            }
+            return sum;
+        }
         var serviceObject = {
             loadJsonFromPromise: function (path) {
                 return Rx.Observable.fromPromise($.getJSON(path, function (json) {
