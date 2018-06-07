@@ -10,23 +10,9 @@
         controller: ['$scope', function picklistCtrl($scope) {
 
             $scope.selectedItems = [];
-            function contain(array, item) {
-
-                var found = false;
-                var position = -1;
-                for (var i = 0; i < array.length; i++) {
-                    if (array[i].id == item.id) {
-                        found = true;
-                        position = i;
-                        break;
-                    }
-                }
-                return { isFound: found, position: position }
-            }
-
             //Create selected items array
             $scope.onSelectedItem = function (item) {
-                isContain = contain($scope.selectedItems, item)
+                isContain = $scope.selectedItems.contain(item);
                 if (item.isSelected) {
                     if (!isContain.isFound)
                         $scope.selectedItems.push(item);

@@ -7,6 +7,43 @@
             }
             return sum;
         }
+        Array.prototype.contain = function (item) {
+            var found = false;
+            var position = -1;
+            for (var i = 0; i < this.length; i++) {
+                if (this[i].id == item.id) {
+                    found = true;
+                    position = i;
+                    break;
+                }
+            }
+            return { isFound: found, position: position }
+        }
+        Math.median = function (values) {
+            values.sort(function (a, b) {
+                return a - b;
+            });
+            var half = Math.floor(values.length / 2);
+
+            if (values.length % 2)
+                return values[half];
+            else
+                return (values[half - 1] + values[half]) / 2.0;
+        }
+        Object.byString = function (o, s) {
+            s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+            s = s.replace(/^\./, '');           // strip a leading dot
+            var a = s.split('.');
+            for (var i = 0, n = a.length; i < n; ++i) {
+                var k = a[i];
+                if (k in o) {
+                    o = o[k];
+                } else {
+                    return;
+                }
+            }
+            return o;
+        }
         var serviceObject = {
             loadJsonFromPromise: function (path) {
                 return Rx.Observable.fromPromise($.getJSON(path, function (json) {
@@ -59,7 +96,6 @@
             }
 
         }
-
         return serviceObject;
 
     }]);
