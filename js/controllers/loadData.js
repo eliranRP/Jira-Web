@@ -8,7 +8,7 @@
                 {
                     path: "../../../sprint_12_399.json",
                     id: "399",
-                    name: "Sprint 13"
+                    name: "Sprint 12"
                 },
                 {
                     path: "../../../sprint_13_403.json",
@@ -39,13 +39,23 @@
                     path: "../../../sprint_18_425.json",
                     id: "425",
                     name: "Sprint 18"
+                },
+                {
+                    path: "../../../sprint_19_431.json",
+                    id: "431",
+                    name: "Sprint 19"
+                },
+                {
+                    path: "../../../sprint_20_436.json",
+                    id: "436",
+                    name: "Sprint 20"
                 }
             ];
 
 
 
-        //Load issues
-        //Rx.Observable.from(sprints)
+        // // //Load issues
+        // Rx.Observable.from(sprints)
         //    .flatMap(sprint => {
         //        return issueDbController.uploadSprint(sprint.path, sprint.id, sprint.name)
         //    })
@@ -57,22 +67,33 @@
 
 
 
-        //Load sprints
+    //    //Load sprints
 
-        //sprintDbController.uploadList("../../../projects.json")
-        //     .subscribe(function (results) {
-        //         console.log("results: ", results)
-        //     }, function (e) {
-        //         console.log("error: ", e)
-        //      });
+    //     sprintDbController.uploadList("../../../sprint_list.json")
+    //         .subscribe(function (results) {
+    //             console.log("results: ", results)
+    //         }, function (e) {
+    //             console.log("error: ", e)
+    //          });
 
 
-        //Load projects
-        //projectDbController.uploadList("../../../projects.json")
-        //    .subscribe(function (results) {
-        //        console.log("results: ", results)
-        //    }, function (e) {
-        //        console.log("error: ", e)
-        //    });
+    //    // Load projects
+    //     projectDbController.uploadList("../../../projects.json")
+    //        .subscribe(function (results) {
+    //            console.log("results: ", results)
+    //        }, function (e) {
+    //            console.log("error: ", e)
+    //        });
+
+
+
+    //     //Load users
+    //    userDbController.createListFrom("issue")
+    //        .subscribe(function (results) {
+    //            console.log("results: ", results)
+    //        }, function (e) {
+    //            console.log("error: ", e)
+    //        });
+
 
     }]);
