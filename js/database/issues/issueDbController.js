@@ -3,20 +3,7 @@
         var ISSUE = "issue"
         var db = firebase.firestore();
         var collectionRef = db.collection(ISSUE);
-        Object.byString = function (o, s) {
-            s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-            s = s.replace(/^\./, '');           // strip a leading dot
-            var a = s.split('.');
-            for (var i = 0, n = a.length; i < n; ++i) {
-                var k = a[i];
-                if (k in o) {
-                    o = o[k];
-                } else {
-                    return;
-                }
-            }
-            return o;
-        }
+
         var serviceObject = {
             objects: {
                 sprintArray: {
@@ -89,14 +76,20 @@
                 project: function (group, projectId) {
 
                     var promises = [];
-
-                    //Create a query
-                    group.forEach((user) => {
+                    if (group != null || group != undefined) {
+                        //Create a query
+                        group.forEach((user) => {
+                            promises.push(db.collection(ISSUE)
+                                .where(issuesConstant.PRIMARY_KEY, "==", user.id)
+                                .where(issuesConstant.PROJECT_ID, "==", projectId)
+                                .get())
+                        })
+                    } else {
                         promises.push(db.collection(ISSUE)
-                            .where(issuesConstant.PRIMARY_KEY, "==", user.id)
-                            .where(issuesConstant.PROJECT_ID, "==", projectName)
+                            .where(issuesConstant.PROJECT_ID, "==", projectId)
                             .get())
-                    })
+                    }
+
 
                     return promises;
                 },
@@ -114,7 +107,7 @@
 
                     return promises;
                 },
-                user: function (group, projectNames) {
+                user: function (group) {
 
                     var promises = [];
 
@@ -126,10 +119,19 @@
                     })
 
                     return promises;
+                },
+                issueType: function (groupBySelector, aggregationSelector, observableData) {
+                    return observableData
+                        .groupBy(p => Object.byString(p, groupBySelector))
+                        .flatMap((group$) => group$
+                            .reduce((acc, cur) =>
+                                [...acc, Object.byString(cur, aggregationSelector)], ["" + group$.key]
+                            ))
+                        .map(arr => ({ 'id':arr[0], 'values': arr.slice(1), 'sum': arr.slice(1).sum() }))
                 }
             },
             //Return all issues by users id's
-            getListByUsers: function (promises) {
+            asObservable: function (promises) {
                 //return observable with all filterd issues
                 return Rx.Observable.fromPromise(Promise.all(promises))
                     .flatMap(querySnapshot => Rx.Observable.from(querySnapshot))
@@ -213,21 +215,6 @@
                                 }()
                             }
                         })
-                },
-                byIssueType: function (keySelector, observableData) {
-                    return observableData
-                        .filter(item => Object.byString(item, keySelector) != undefined)
-                        .groupBy(item => Object.byString(item, keySelector), p => p.name)
-                        .reduce((data, issue) => {
-                            return {
-                                totalIssues: data.totalIssues += 1,
-                                bugsPoints: serviceObject.doneIssues(data, issue, keySelector),
-                                tasksPoints: data.sumAllPoints += Object.byString(issue, keySelector),
-                                userStoryPoints: data.sumAllPoints += Object.byString(issue, keySelector),
-                                otherPoints: data.sumAllPoints += Object.byString(issue, keySelector),
-                                sprint: issue.sprintId
-                            }
-                        }, { totalIssues: 0, donePoints: 0, sumAllPoints: 0, sprint: '' })
                 }
             },
             doneIssues: function (data, issue, keySelector) {
@@ -241,7 +228,7 @@
                 var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                 if (observableData == null || observableData == undefined) {
                     var promises = serviceObject.groupBy.sprint(group, currentSprintId);
-                    observableData = serviceObject.getListByUsers(promises)
+                    observableData = serviceObject.asObservable(promises)
 
                 }
 
@@ -252,19 +239,39 @@
                 var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                 if (observableData == null || observableData == undefined) {
                     var promises = serviceObject.groupBy.status(group, issuesConstant.STATUS.DONE);
-                    observableData = serviceObject.getListByUsers(promises)
+                    observableData = serviceObject.asObservable(promises)
                 }
 
                 return serviceObject.agrregation.average(keySelector, observableData)
             },
+
             graphData: {
                 commitmentVsCompleted: function (group) {
                     var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
                     var promises = serviceObject.groupBy.user(group);
 
 
-                    observableData = serviceObject.getListByUsers(promises)
+                    observableData = serviceObject.asObservable(promises)
                     return serviceObject.agrregation.commitmentVsCompleted(keySelector, observableData)
+                },
+                getProjectAnalysis: function (projectId, group, observableData) {
+
+                    //If we don't  have a group -> bring all the related project issues
+                    if (group == null || group == undefined) {
+                        var promises = serviceObject.groupBy.project(group, projectId);
+                        observableData = serviceObject.asObservable(promises)
+                    }
+                    //Else -> bring all filterd issues with the current gruop selected
+                    else if (observableData == null || observableData == undefined) {
+                        var promises = serviceObject.groupBy.project(group, projectId);
+                        observableData = serviceObject.asObservable(promises)
+                    }
+
+                    //Return an observable group by a issue type
+                    return serviceObject
+                        .groupBy
+                        .issueType(issuesConstant.TYPE, issuesConstant.POINTS_KEY_SELECTOR, observableData)
+
                 }
             },
             loadSprintJson: function (path) {

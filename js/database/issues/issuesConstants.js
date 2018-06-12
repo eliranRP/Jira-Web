@@ -5,6 +5,7 @@
     PROJECT_NAME: "fields.project.name",
     PROJECT_ID: "fields.project.id",
     STATUS_NAME: "fields.status.name",
+    TYPE: "fields.issuetype.name",
     STATUS: {
         DONE: "Done"
     }
