@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="MainApp">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,9 +41,65 @@
     <title> test-jira </title>
 
 </head>
+
 <body ng-cloak ng-controller="testCtrl" style="margin-left:200px;">
 
 
+    <div class="row" style="margin-top:100px;">
+        <div class="col-xs-12 col-sm-6">
+            <div class="card p-b-10">
+                <header class="card-heading ">
+                    <h2 class="card-title">Drill down current sprint</h2>
+                    <jwbdropdown info="projects" identifier="'project'" value="selectedProject.name" on-select=onProjectSelected(current,previous)
+                        style="  right: 10px;top: 0px;position: absolute;list-style: none;padding: 0; margin: 0;">
+
+                    </jwbdropdown>
+                </header>
+                <div class="card-body">
+                    <ul class="summary">
+                        <li>
+                            <span class="block m-b-5">Total Points</span>
+                            <h2>{{totalPointsInProject}}</h2>
+                        </li>
+                    </ul>
+                </div>
+                <canvas id="conversionStats1" width="1200" height="400"></canvas>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="card">
+                <header class="card-heading">
+                    <h2 class="card-title">Commitment vs. Completed</h2>
+                    <ul class="card-actions icons right-top">
+                        <li>
+                            <a href="javascript:void(0)" data-toggle="refresh">
+                                <i class="zmdi zmdi-refresh-alt"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <i class="zmdi zmdi-more-vert"></i>
+                            </a>
+                            <ul class="dropdown-menu btn-primary dropdown-menu-right">
+                                <li>
+                                    <a href="javascript:void(0)">Option One</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Option Two</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Option Three</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </header>
+                <div class="card-body">
+                    <div id="morris_area_chart1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--// Initialize Firebase-->
     <script src="../js/inizialize.js"></script>
@@ -85,8 +142,8 @@
     <script src="../js/widgets/dropdown/dropdwon.js"></script>
     <script src="../js/widgets/picklist/picklist.js"></script>
 
-
     <script src="../assets/js/vendor.bundle.js"></script>
     <script src="../assets/js/app.bundle.js"></script>
 </body>
+
 </html>

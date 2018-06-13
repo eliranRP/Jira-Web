@@ -44,7 +44,6 @@
             },
             uploadSprint: function (path, sprintId, sprintName) {
                 return Rx.Observable
-                    //.fromPromise(utils.uploadFile(file, fileName))
                     .fromPromise(utils.loadJson(path))
                     .map(items => {
                         items.issues.forEach(issue => {
@@ -124,10 +123,13 @@
                     return observableData
                         .groupBy(p => Object.byString(p, groupBySelector))
                         .flatMap((group$) => group$
-                            .reduce((acc, cur) =>
-                                [...acc, Object.byString(cur, aggregationSelector)], ["" + group$.key]
-                            ))
-                        .map(arr => ({ 'id':arr[0], 'values': arr.slice(1), 'sum': arr.slice(1).sum() }))
+                            .reduce((acc, cur) => [...acc, Object.byString(cur, aggregationSelector)], ["" + group$.key]))
+                        .map(arr => ({
+
+                            'id': arr[0],
+                            'values': arr.slice(1),
+                            'sum': arr.slice(1).sum()
+                        }))
                 }
             },
             //Return all issues by users id's
@@ -152,7 +154,12 @@
                                 sumAllPoints: data.sumAllPoints += Object.byString(issue, keySelector),
                                 sprint: issue.sprintId
                             }
-                        }, { totalIssues: 0, donePoints: 0, sumAllPoints: 0, sprint: '' })
+                        }, {
+                            totalIssues: 0,
+                            donePoints: 0,
+                            sumAllPoints: 0,
+                            sprint: ''
+                        })
                 },
                 average: function (keySelector, observableData) {
                     return observableData
@@ -172,7 +179,11 @@
                                     return data.sprints
                                 }()
                             }
-                        }, { count: 0, sum: 0, sprints: [] })
+                        }, {
+                            count: 0,
+                            sum: 0,
+                            sprints: []
+                        })
                         //Calculate the average
                         .map(data => {
                             return {
@@ -199,7 +210,11 @@
                                     return data.sprints
                                 }()
                             }
-                        }, { count: 0, sum: 0, sprints: {} })
+                        }, {
+                            count: 0,
+                            sum: 0,
+                            sprints: {}
+                        })
                         //Calculate the average
                         .map(data => {
                             return {
@@ -254,9 +269,16 @@
                     observableData = serviceObject.asObservable(promises)
                     return serviceObject.agrregation.commitmentVsCompleted(keySelector, observableData)
                 },
+                taskSort: function compare(a, b) {
+                    if (a.id < b.id)
+                        return -1;
+                    if (a.id > b.id)
+                        return 1;
+                    return 0;
+                },
                 getProjectAnalysis: function (projectId, group, observableData) {
 
-                    //If we don't  have a group -> bring all the related project issues
+                    //If we don't  have a group (list of users) -> bring all the related project issues
                     if (group == null || group == undefined) {
                         var promises = serviceObject.groupBy.project(group, projectId);
                         observableData = serviceObject.asObservable(promises)
@@ -271,7 +293,63 @@
                     return serviceObject
                         .groupBy
                         .issueType(issuesConstant.TYPE, issuesConstant.POINTS_KEY_SELECTOR, observableData)
+                        .toArray()
+                        // create an object to fit bars garph
+                        .map(results => {
+                            console.log("results before sorting: ", results)
 
+                            results.sort(function (a, b) {
+                                return (a.id > b.id) ? -1 : ((b.id > a.id) ? 1 : 0);
+                            })
+
+                            console.log("results after sorting: ", results)
+
+                            results.labels = []
+                            results.data = []
+                            results.totalPoints = 0
+                            results.forEach(element => {
+                                results.labels.push(element.id)
+                                if (Number.isNaN(element.sum)) {
+                                    element.sum = 0;
+                                }
+                                results.data.push(element.sum)
+                                results.totalPoints += element.sum
+                            });
+
+                            return results
+                        })
+                        //Arrange bars color
+                        .map(results => {
+                            results.backgroundColor = []
+                            results.borderColor = []
+                            results.labels.forEach(label => {
+                                var backgroundColor;
+                                var borderColor;
+                                switch (label) {
+                                    case "Story":
+                                        backgroundColor = 'rgba(54, 162, 235, 0.2)'
+                                        borderColor = 'rgba(54, 162, 235,1)'
+                                        break;
+                                    case "Task":
+                                        backgroundColor = 'rgba(75, 192, 192, 0.2)'
+                                        borderColor = 'rgba(75, 192, 192, 1)'
+                                        break;
+                                    case "Bug":
+                                        backgroundColor = 'rgba(255, 99, 132, 0.2)'
+                                        borderColor = 'rgba(255, 99, 132,1)'
+                                        break;
+                                    default:
+                                        backgroundColor = 'rgba(255, 206, 86, 0.2)'
+                                        borderColor = 'rgba(255, 206, 86, 1)'
+
+
+                                }
+                                results.backgroundColor.push(backgroundColor)
+                                results.borderColor.push(borderColor)
+
+                            })
+                            return results
+                        });
                 }
             },
             loadSprintJson: function (path) {
@@ -281,4 +359,5 @@
 
         return serviceObject;
 
-    }]);
+    }
+]);

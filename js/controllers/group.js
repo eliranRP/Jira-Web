@@ -4,31 +4,41 @@
         userDbController, graphService, projectDbController) {
         //Select sprint
         $scope.selectedSprint = {
-            name: 'Select sprint', id: '-1'
+            name: 'Select sprint',
+            id: '-1'
+        };
+        //Previous sprint
+        $scope.prevSprint = {
+            name: 'Previous sprint',
+            id: '-1'
         };
 
-        $scope.selectedUsers = [];
-        $scope.select = '';
         $scope.query = '';
         $scope.res = {};
+        $scope.totalPointsInProject = 0
 
         var currentPointsAccomplish = utils.createProgressBar("#currentPointsAccomplish", "#fb4869");
-        var previousPointsAccomplish = utils.createProgressBar("#previousPointsAccomplish", "#42a5f5");// progressbar.animate(value);
+        var previousPointsAccomplish = utils.createProgressBar("#previousPointsAccomplish", "#42a5f5"); // progressbar.animate(value);
 
 
         //Graphs
         var areaDoneVsNotDone = graphService.Area.create('morris_area_chart1',
             null,
-            'name',
-            ['donePoints', 'notDonePoints'],
-            ['Done', 'Not done'])
+            'name', ['donePoints', 'notDonePoints'], ['Done', 'Not done'])
+        var barChart;
 
         //Load sprints
         sprintDbController.getList()
             .safeApply($scope, function (result) {
                 $scope.sprints = result;
+
+                //Selected
                 $scope.selectedSprint.name = result[0].name
                 $scope.selectedSprint.id = result[0].id
+
+                //previous
+                $scope.prevSprint.name = result[1].name
+                $scope.prevSprint.id = result[1].id
 
             })
             .subscribe(function (results) {
@@ -40,24 +50,28 @@
 
         //Load users
         userDbController.getList()
-            .digest($scope, 'users')
+            .safeApply($scope, function (result) {
+                $scope.users = result;
+            })
             .subscribe(function (results) {
-                $scope.users = results
-                console.log("users: ", results)
-            },
-            function (e) {
-                console.log("error: ", e)
-            });
+                    console.log("users: ", results)
+                },
+                function (e) {
+                    console.log("error: ", e)
+                });
 
         //Load projects
         projectDbController.getList()
+            .map(projects => projects.sort(function (a, b) {
+                return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+            }))
             .digest($scope, 'projects')
             .subscribe(function (results) {
-                console.log("projects: ", results)
-            },
-            function (e) {
-                console.log("error: ", e)
-            });
+                    console.log("projects: ", results)
+                },
+                function (e) {
+                    console.log("error: ", e)
+                });
 
 
         //Observe chosen sprint
@@ -71,18 +85,6 @@
                 //$("#sprint-list").removeClass("open");
             });
 
-
-        //Observe chosen project
-        $scope.$createObservableFunction('onProjectSelected')
-            .distinctUntilChanged()
-            .safeApply($scope, function (result) {
-                $scope.selectedProject = result[0]
-                $scope.prevProject = result[1]
-            })
-            .subscribe(function (results) {
-               // $("#sprint-list").removeClass("open");
-            });
-
         //Observe chosen users
         var usersObservable = $scope.$createObservableFunction('onUserSelected')
             .safeApply($scope, function (result) {
@@ -91,7 +93,10 @@
             .debounce(800)
             .flatMap(items => Rx.Observable.from(items)
                 .map(user => {
-                    return { id: user.id, name: user.displayName }
+                    return {
+                        id: user.id,
+                        name: user.displayName
+                    }
                 })
                 .toArray()
             )
@@ -101,7 +106,10 @@
         observeOnScope($scope, 'selectedSprint')
             .combineLatest(usersObservable)
             .map(data => {
-                return { group: data[1], sprintId: data[0].newValue.id + "" }
+                return {
+                    group: data[1],
+                    sprintId: data[0].newValue.id + ""
+                }
             })
             .flatMap(data => issueDbController.getSumOfGroup(data.group, data.sprintId))
             .safeApply($scope, function (result) {
@@ -124,9 +132,15 @@
             .combineLatest(usersObservable)
             .map(data => {
                 if (data[0] != undefined && data[0].newValue != undefined && data[0].newValue.id != undefined)
-                    return { group: data[1], sprintId: data[0].newValue.id + "" }
+                    return {
+                        group: data[1],
+                        sprintId: data[0].newValue.id + ""
+                    }
                 else
-                    return { group: data[1], sprintId: "-1" }
+                    return {
+                        group: data[1],
+                        sprintId: "-1"
+                    }
 
             })
             .flatMap(data => issueDbController.getSumOfGroup(data.group, data.sprintId))
@@ -173,4 +187,44 @@
             });
 
 
-    }]);
+
+
+
+
+
+        //Observe chosen project
+        $scope.$createObservableFunction('onProjectSelected')
+            .distinctUntilChanged()
+            .safeApply($scope, function (result) {
+                $scope.selectedProject = result[0]
+                $scope.prevProject = result[1]
+            })
+            .combineLatest(usersObservable)
+            .flatMap(data => {
+                var users = data[1]
+                if (users.length == 0) {
+                    users = null
+                }
+                return issueDbController.graphData.getProjectAnalysis(data[0][0].id, users, null)
+            })
+            .safeApply($scope, function (result) {
+                $scope.totalPointsInProject = result.totalPoints
+            })
+            .subscribe(function (results) {
+                console.log("All: ", results)
+                if (barChart == undefined) {
+                    barChart = graphService.Bar.create(results.labels, 'conversionStats1', results.data, results.backgroundColor, results.borderColor)
+                } else {
+                    barChart.data.labels = results.labels
+                    barChart.data.datasets[0].data = results.data
+                    barChart.data.datasets[0].backgroundColor = results.backgroundColor
+                    barChart.data.datasets[0].borderColor = results.borderColor
+                    barChart.data.datasets[0].label = $scope.selectedProject.name
+                    barChart.update();
+                }
+
+
+
+            });
+    }
+]);
