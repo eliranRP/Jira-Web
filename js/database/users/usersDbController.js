@@ -34,8 +34,11 @@
                             return doc;
                         }).toArray())
             },
+            
             //Create a list of users from a collection
             //And return an observable
+            //For instance, if we want to distinct all users from issue firestore collection
+            // it should look like that ==>  createListFrom("issue")
             createListFrom: function (collectionName) {
                 return Rx.Observable.fromPromise(db.collection(collectionName).get())
                     .flatMap(querySnapshot => {

@@ -1,19 +1,5 @@
 ﻿MainApp.factory('graphService', ['$rootScope', 'utils',
     function ($rootScop, utils) {
-        Object.byString = function (o, s) {
-            s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-            s = s.replace(/^\./, '');           // strip a leading dot
-            var a = s.split('.');
-            for (var i = 0, n = a.length; i < n; ++i) {
-                var k = a[i];
-                if (k in o) {
-                    o = o[k];
-                } else {
-                    return;
-                }
-            }
-            return o;
-        }
         var serviceObject = {
             Area: {
                 create: function (elementId, data, xKey, yKey, labels) {
@@ -30,16 +16,41 @@
                         pointFillColors: ['#ffffff'],
                         pointStrokeColors: ['black'],
                         lineColors: [MaterialLab.APP_COLORS.success, MaterialLab.APP_COLORS.mw_purple],
-                        barColors: [MaterialLab.APP_COLORS.success,MaterialLab.APP_COLORS.mw_purple]
+                        barColors: [MaterialLab.APP_COLORS.success, MaterialLab.APP_COLORS.mw_purple]
                     };
                     config.element = elementId;
                     return Morris.Area(config)
                 },
 
+            },
+            Bar: {
+                create: function conversionStats(labels, id, data, backgroundColor, borderColor) {
+                    if ($('#' + id).length) {
+                        var ctx = document.getElementById(id).getContext("2d");
+                        var datasets = {
+                            labels: labels,
+                            datasets: [{
+                                label: "",
+                                backgroundColor: backgroundColor,
+                                borderColor: borderColor,
+                                borderWidth: 1,
+                                data: data
+                            }]
+                        };
+                        var barChartData = new Chart(ctx, {
+                            type: "bar",
+                            data: datasets,
+                            responsive: true
+                        });
+                        return barChartData
+                    };
+                    return;
+                }
             }
 
         }
 
         return serviceObject;
 
-    }]);
+    }
+]);
