@@ -140,6 +140,10 @@
                     .map(issue => issue.docs)
                     .flatMap(issues => Rx.Observable.from(issues))
                     .map(issue => issue.data())
+                // .map(issue => {
+                //     console.log(Object.byString(issue, issuesConstant.SPRINT_ID))
+                //     return issue;
+                // })
 
             },
 
@@ -161,13 +165,25 @@
                             sprint: ''
                         })
                 },
-                average: function (keySelector, observableData) {
+                average: function (keySelector, observableData, filter) {
                     return observableData
+                        .filter(issue => {
+                            if (filter == null || filter == undefined) {
+                                return true;
+                            } else {
+                                return filter(issue);
+                            }
+                        })
                         .filter(issue => Object.byString(issue, keySelector) != undefined)
                         .reduce((data, issue) => {
                             return {
                                 count: data.count += 1,
                                 sum: data.sum += Object.byString(issue, keySelector),
+                                points: function () {
+                                    console.log(issue);
+                                    data.points.push(Object.byString(issue, keySelector))
+                                    return data.points;
+                                }(),
                                 sprints: function () {
 
                                     var key = issue.sprintId;
@@ -182,6 +198,7 @@
                         }, {
                             count: 0,
                             sum: 0,
+                            points: [],
                             sprints: []
                         })
                         //Calculate the average
@@ -189,6 +206,8 @@
                             return {
                                 sum: data.sum,
                                 count: Object.keys(data.sprints).length,
+                                medeation: Math.median(data.points),
+                                points: data.points,
                                 average: data.sum / Object.keys(data.sprints).length,
                                 sprints: data.sprints
                             }
@@ -248,6 +267,36 @@
                 }
 
                 return serviceObject.agrregation.sum(keySelector, observableData)
+            },
+            /**
+             * Calculate average added points after sprunt started
+             */
+            getPointsAfterSprintStarts: function (group, observableData) {
+
+
+                var keySelector = issuesConstant.POINTS_KEY_SELECTOR;
+                if (observableData == null || observableData == undefined) {
+                    var promises = serviceObject.groupBy.user(group);
+                    observableData = serviceObject.asObservable(promises)
+                }
+
+                return serviceObject.agrregation.average(keySelector, observableData,
+                    function (issue) {
+                        try {
+                            var startSprintDate = new Date(Object.byString(issue, issuesConstant.SPRINT_START_DATE));
+                            var issueCreatedDate = new Date(Object.byString(issue, issuesConstant.CREATED_DATE));
+                        } catch (e) {
+                            return false
+                        }
+
+
+                        if (issueCreatedDate > startSprintDate) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    })
+
             },
             getRecomndedPoints: function (group, observableData) {
 
